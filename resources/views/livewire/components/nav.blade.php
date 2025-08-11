@@ -14,8 +14,10 @@ new class extends Component {
 
 <div class="cvs-nav fixed w-full backdrop-blur-sm top-0 z-50">
     <div class="cvs-nav-container max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-        <div class="text-2xl font-bold">
-            <a href="/" class="text-white no-underline hover:text-white focus:text-white active:text-white">Universal Tantra</a>
+        <div class="text-2xl font-bold relative">
+            <a wire:navigate href="/" class="text-white no-underline hover:text-white focus:text-white active:text-white">
+                <img src="{{ asset('img/UT-Logo.png') }}" alt="UT Logo" class="max-w-18 sm:max-w-24">
+            </a>
         </div>
 
         <!-- Hamburger menu: visible on mobile only -->
@@ -35,13 +37,14 @@ new class extends Component {
 
         <!-- Desktop nav: hidden on mobile -->
         <nav class="cvs-nav-desktop hidden lg:flex space-x-6 items-center font-semibold">
-            <a href="/about" class="text-white/70 hover:text-white transition-colors">About</a>
-            <a href="/library" class="text-white/70 hover:text-white transition-colors">Library</a>
-            <a href="/initiations" class="text-white/70 hover:text-white transition-colors">Initiations</a>
-            <a href="/events" class="text-white/70 hover:text-white transition-colors">Events</a>
-            <a href="/donate" class="text-white/70 hover:text-white transition-colors">Donate</a>
-            <a href="/shop" class="text-white/70 hover:text-white transition-colors">Shop</a>
-            <a href="/login" class="text-black bg-white px-8 rounded-full py-1 transition-opacity">Login</a>
+            <a href="/about" class="text-neutral-400 hover:text-[#fbb836] transition-colors">About</a>
+            <a href="/library" class="text-neutral-400 hover:text-[#fbb836] transition-colors">Library</a>
+            <a href="/initiations" class="text-neutral-400 hover:text-[#fbb836] transition-colors">Initiations</a>
+            <a wire:navigate href="/events" class="text-neutral-400 hover:text-[#fbb836] transition-colors" wire:current="!text-[#fbb836]">Events</a>
+            <a href="/donate" class="text-neutral-400 hover:text-[#fbb836] transition-colors">Donate</a>
+            <a href="/shop" class="text-neutral-400 hover:text-[#fbb836] transition-colors">Shop</a>
+            <a wire:navigate href="/book-a-session" class="text-black bg-white px-8 rounded-full py-1 transition-opacity">Book a Session</a>
+            <a wire:navigate href="/login" class="text-black bg-white px-8 rounded-full py-1 transition-opacity">Login</a>
         </nav>
     </div>
 
@@ -73,7 +76,7 @@ new class extends Component {
 <script>
 function toggleMenu() {
     const mobileNav = document.querySelector('.cvs-nav-mobile');
-    const overlay = document.querySelector('.cvs-nav-overlay');
+    // const overlay = document.querySelector('.cvs-nav-overlay');
     const toggleButton = document.querySelector('.cvs-nav-toggle');
     const menuOpen = document.querySelector('.menu-open');
     const menuClose = document.querySelector('.menu-close');
@@ -82,13 +85,13 @@ function toggleMenu() {
 
     if (isOpen) {
         mobileNav.classList.add('translate-x-full');
-        overlay.classList.add('hidden');
+        // overlay.classList.add('hidden');
         menuOpen.classList.remove('hidden');
         menuClose.classList.add('hidden');
         toggleButton.setAttribute('aria-expanded', 'false');
     } else {
         mobileNav.classList.remove('translate-x-full');
-        overlay.classList.remove('hidden');
+        // overlay.classList.remove('hidden');
         menuOpen.classList.add('hidden');
         menuClose.classList.remove('hidden');
         toggleButton.setAttribute('aria-expanded', 'true');
@@ -98,14 +101,14 @@ function toggleMenu() {
 // Reset mobile menu on resize to desktop view
 function handleResize() {
     const mobileNav = document.querySelector('.cvs-nav-mobile');
-    const overlay = document.querySelector('.cvs-nav-overlay');
+    // const overlay = document.querySelector('.cvs-nav-overlay');
     const toggleButton = document.querySelector('.cvs-nav-toggle');
     const menuOpen = document.querySelector('.menu-open');
     const menuClose = document.querySelector('.menu-close');
 
     if (window.innerWidth >= 1024) { // Matches Tailwind's lg breakpoint
         mobileNav.classList.add('translate-x-full');
-        overlay.classList.add('hidden');
+        // overlay.classList.add('hidden');
         menuOpen.classList.remove('hidden');
         menuClose.classList.add('hidden');
         toggleButton.setAttribute('aria-expanded', 'false');

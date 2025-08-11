@@ -29,8 +29,8 @@ class extends Component {
         <div class="h-72 rounded-3xl w-full border-2 border-gray-200 max-w-2xl m-auto mt-16 bg-white/30">
         </div>
         <div class="flex gap-8 mt-12 justify-center">
-            <x-frontend.c-button class="bg-gradient-to-b from-red-700 to-red-900 w-89" text="LOGIN ACCOUNT" />
-            <x-frontend.c-button class="bg-gradient-to-b from-yellow-500 to-yellow-900 w-89" text="ENTER THE TEMPLE" />
+            <x-frontend.c-button class="bg-gradient-to-b from-red-700 to-red-900 w-89" text="LOGIN ACCOUNT" :link="'/login'"  />
+            <x-frontend.c-button class="bg-gradient-to-b from-yellow-500 to-yellow-900 w-89" text="ENTER THE TEMPLE"/>
         </div>
     </section>
     <br>
@@ -51,7 +51,7 @@ class extends Component {
                 " 
             />
         </div>
-        <div class="flex justify-center lg:justify-end">
+        <div class="mt-16 lg:mt-0 flex justify-center lg:justify-end">
             <x-frontend.c-rounded-img />
         </div>
     </x-frontend.c-section>
@@ -80,7 +80,7 @@ class extends Component {
         />
     </x-frontend.c-section>
     <x-frontend.c-section class="lg:!max-w-4xl" :gridGap="0" :gridColumn="2">
-        <div class="flex justify-center lg:justify-start order-2 lg:order-1 mt-8 lg:mt-0">
+        <div class="flex justify-center lg:justify-start order-2 lg:order-1 mt-16 lg:mt-0">
             <x-frontend.c-rounded-img />
         </div>
         <div class="flex flex-col justify-center order-1 lg:order-2">
@@ -89,7 +89,7 @@ class extends Component {
                 :message="'Desire is Devotion'" 
             />
             <x-frontend.c-paragraph 
-                :class="'text-white text-shadow-sm'"
+                :class="'text-white text-shadow-sm text-center sm:text-left'"
                 :message="
                     'Let\'s drop the spiritual platitudes: we don\'t fear desire. We honor it. We spiral it into prayer. A sigh becomes mantra. 
                     Tantric breathing takes you deeper; reiki touch warms your center; massage opens your edges; ritual holds your boundaries. 
@@ -139,7 +139,7 @@ class extends Component {
         />
     </x-frontend.c-section>
     <x-frontend.c-section class="lg:!max-w-4xl" :gridColumn="2">
-        <div class="flex justify-center lg:justify-start order-2 lg:order-1">
+        <div class="flex justify-center lg:justify-start order-2 lg:order-1 mt-16 lg:mt-0">
             <x-frontend.c-rounded-img />
         </div>
         <div class="flex flex-col justify-center order-1 lg:order-2">
@@ -148,7 +148,7 @@ class extends Component {
                 :message="'For the Warriors and Lovers'" 
             />
             <x-frontend.c-paragraph 
-                :class="'text-white text-shadow-sm'"
+                :class="'text-white text-shadow-sm text-center sm:text-left'"
                 :message="
                     'You know that flutter behind the breastbone, a soft flare of heat that arrives uninvited, just 
                     before your mind quiets and something opens. That\'s Tantra—not yoga-class meditation, but the 
