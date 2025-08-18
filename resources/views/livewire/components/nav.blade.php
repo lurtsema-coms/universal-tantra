@@ -43,7 +43,7 @@ new class extends Component {
             <a wire:navigate href="/events" class="text-neutral-400 hover:text-white transition-colors" wire:current="!text-white">Events</a>
             <a wire:navigate href="/donate" class="text-neutral-400 hover:text-white transition-colors" wire:current="!text-white">Donate</a>
             <a href="/shop" class="text-neutral-400 hover:text-white transition-colors">Shop</a>
-            <a wire:navigate href="/book-a-session" class="text-black bg-white px-8 rounded-full py-1 transition-opacity">Book a Session</a>
+            <a wire:navigate href="/booking" class="text-black bg-white px-8 rounded-full py-1 transition-opacity">Book a Session</a>
             <a wire:navigate href="/login" class="text-black bg-white px-8 rounded-full py-1 transition-opacity">Login</a>
         </nav>
     </div>
