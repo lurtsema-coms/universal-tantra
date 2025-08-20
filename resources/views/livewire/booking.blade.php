@@ -21,82 +21,285 @@ class extends Component {
             :message="'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum fuga ex officiis! Eos, possimus. Eum laboriosam aspernatur eos perferendis sunt.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum fuga ex officiis! Eos, possimus. Eum laboriosam aspernatur eos perferendis sunt.'"
         />
     </x-frontend.c-section>
-    <x-frontend.c-section :gridColumn="2">
-        <div>
-            <x-frontend.c-header-lg 
-                :class="'text-white text-shadow-lg text-left sm:text-center'" 
-                :message="'A Pulse Beneath the Pavement'" 
-            />
-            <x-frontend.c-paragraph 
-                :class="'text-neutral-200 text-shadow-sm'"
-                :message="
-                    'You know that flutter behind the breastbone, a soft flare of heat that arrives uninvited, just 
-                    before your mind quiets and something opens. That\'s Tantra—not yoga-class meditation, but the 
-                    liturgy of living skin. Universal Tantra invites you into your body, not out of it. We call that 
-                    pulse God. Goddess, Love, Life—but there, we let touch, breath, and ritual speak.'
-                " 
-            />
-        </div>
-        <div class="mt-16 lg:mt-0 flex justify-center lg:justify-end">
-            <x-frontend.c-rounded-img />
-        </div>
-    </x-frontend.c-section>
-    {{-- <x-frontend.c-section class="!pb-0">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <x-frontend.c-button 
-                :class="'bg-[#8c1717] rounded-md'"
-                :text="'$5000'"
-            />
-            <x-frontend.c-button 
-                :class="'bg-[#8c1717] rounded-md'"
-                :text="'$2500'"
-            />
-            <x-frontend.c-button 
-                :class="'bg-[#8c1717] rounded-md'"
-                :text="'$1000'"
-            />
-            <x-frontend.c-button 
-                :class="'bg-[#8c1717] rounded-md'"
-                :text="'$500'"
-            />
-            <x-frontend.c-button 
-                :class="'bg-[#8c1717] rounded-md'"
-                :text="'$250'"
-            />
-            <x-frontend.c-button 
-                :class="'bg-[#8c1717] rounded-md'"
-                :text="'$100'"
-            />
-            <div class="col-span-2 bg-[#8c1717] rounded-md flex items-center gap-8 px-8">
-                <span class="text-white text-2xl">$</span>
-                <x-frontend.c-input 
-                    :inputSectionClass="'w-full'"
-                    :class="'text-2xl'"
-                    :placeholder="'Other Amount'"
-                    :id="'donate-amount'"
-                />
-            </div>
-        </div>
+    <x-frontend.c-section :gridColumn="1" class="!py-5">
         <div class="flex flex-col lg:flex-row items-center relative gap-6 mt-16">
             <x-frontend.c-header-md
                 :class="'text-white text-shadow-lg'" 
-                :message="'Choose Payment'" 
+                :message="'Select Service'" 
             />
-            <div class="mb-4 sm:mb-0">
-                <x-frontend.c-button 
-                    :class="'bg-white px-10 mr-4'"
-                >
-                    <img class="max-w-26" src="{{ asset('img/paypal.png') }}" alt="PayPal">
-                </x-frontend.c-button>
-                <x-frontend.c-button 
-                    :class="'bg-white px-10'"
-                >
-                    <img class="max-w-20" src="{{ asset('img/visa.png') }}" alt="Visa">
-                </x-frontend.c-button>
-            </div>
         </div>
     </x-frontend.c-section>
-    <x-frontend.c-section>
+    <x-frontend.c-section class="!py-1">
+        <div class="grid grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-8">
+            <a class="bg-[#8c1717] text-white flex items-center justify-between py-3 px-5 gap-5 rounded-md hover:cursor-pointer font-semibold hover:opacity-80 w-full text-2xl">
+                <div class="rounded-full h-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        {{-- width="2rem"  --}}
+                        height="2.5rem">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M10 8l4 4-4 4"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span>
+                        Lorem Ipsum
+                    </span>
+                    <span class="text-sm font-light">
+                        1 Hour
+                    </span>
+                </div>
+                <div class=" bg-white text-[#8c1717] rounded-full h-10 flex items-center justify-center lg:ml-40">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        height="2.5rem">
+                        {{-- <circle cx="12" cy="12" r="10"></circle> --}}
+                        <path d="M9.09 9a3 3 0 1 1 3.91 2.83c-.45.18-.82.52-1 1v1"></path>
+                        <line x1="12" y1="17" x2="12" y2="17"></line>
+                    </svg>
+                </div>
+            </a>
+            <a class="bg-[#8c1717] text-white flex items-center justify-between py-3 px-5 gap-5 rounded-md hover:cursor-pointer font-semibold hover:opacity-80 w-full text-2xl">
+                <div class="rounded-full h-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        {{-- width="2rem"  --}}
+                        height="2.5rem">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M10 8l4 4-4 4"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span>
+                        Lorem Ipsum
+                    </span>
+                    <span class="text-sm font-light">
+                        1 Hour
+                    </span>
+                </div>
+                <div class=" bg-white text-[#8c1717] rounded-full h-10 flex items-center justify-center lg:ml-40">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        height="2.5rem">
+                        {{-- <circle cx="12" cy="12" r="10"></circle> --}}
+                        <path d="M9.09 9a3 3 0 1 1 3.91 2.83c-.45.18-.82.52-1 1v1"></path>
+                        <line x1="12" y1="17" x2="12" y2="17"></line>
+                    </svg>
+                </div>
+            </a>
+            <a class="bg-[#8c1717] text-white flex items-center justify-between py-3 px-5 gap-5 rounded-md hover:cursor-pointer font-semibold hover:opacity-80 w-full text-2xl">
+                <div class="rounded-full h-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        {{-- width="2rem"  --}}
+                        height="2.5rem">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M10 8l4 4-4 4"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span>
+                        Lorem Ipsum
+                    </span>
+                    <span class="text-sm font-light">
+                        1 Hour
+                    </span>
+                </div>
+                <div class=" bg-white text-[#8c1717] rounded-full h-10 flex items-center justify-center lg:ml-40">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        height="2.5rem">
+                        {{-- <circle cx="12" cy="12" r="10"></circle> --}}
+                        <path d="M9.09 9a3 3 0 1 1 3.91 2.83c-.45.18-.82.52-1 1v1"></path>
+                        <line x1="12" y1="17" x2="12" y2="17"></line>
+                    </svg>
+                </div>
+            </a>
+            <a class="bg-[#8c1717] text-white flex items-center justify-between py-3 px-5 gap-5 rounded-md hover:cursor-pointer font-semibold hover:opacity-80 w-full text-2xl">
+                <div class="rounded-full h-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        {{-- width="2rem"  --}}
+                        height="2.5rem">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M10 8l4 4-4 4"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span>
+                        Lorem Ipsum
+                    </span>
+                    <span class="text-sm font-light">
+                        1 Hour
+                    </span>
+                </div>
+                <div class=" bg-white text-[#8c1717] rounded-full h-10 flex items-center justify-center lg:ml-40">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        height="2.5rem">
+                        {{-- <circle cx="12" cy="12" r="10"></circle> --}}
+                        <path d="M9.09 9a3 3 0 1 1 3.91 2.83c-.45.18-.82.52-1 1v1"></path>
+                        <line x1="12" y1="17" x2="12" y2="17"></line>
+                    </svg>
+                </div>
+            </a>
+            <a class="bg-[#8c1717] text-white flex items-center justify-between py-3 px-5 gap-5 rounded-md hover:cursor-pointer font-semibold hover:opacity-80 w-full text-2xl">
+                <div class="rounded-full h-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        {{-- width="2rem"  --}}
+                        height="2.5rem">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M10 8l4 4-4 4"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span>
+                        Lorem Ipsum
+                    </span>
+                    <span class="text-sm font-light">
+                        1 Hour
+                    </span>
+                </div>
+                <div class=" bg-white text-[#8c1717] rounded-full h-10 flex items-center justify-center lg:ml-40">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        height="2.5rem">
+                        {{-- <circle cx="12" cy="12" r="10"></circle> --}}
+                        <path d="M9.09 9a3 3 0 1 1 3.91 2.83c-.45.18-.82.52-1 1v1"></path>
+                        <line x1="12" y1="17" x2="12" y2="17"></line>
+                    </svg>
+                </div>
+            </a>
+            <a class="bg-[#8c1717] text-white flex items-center justify-between py-3 px-5 gap-5 rounded-md hover:cursor-pointer font-semibold hover:opacity-80 w-full text-2xl">
+                <div class="rounded-full h-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        {{-- width="2rem"  --}}
+                        height="2.5rem">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M10 8l4 4-4 4"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span>
+                        Lorem Ipsum
+                    </span>
+                    <span class="text-sm font-light">
+                        1 Hour
+                    </span>
+                </div>
+                <div class=" bg-white text-[#8c1717] rounded-full h-10 flex items-center justify-center lg:ml-40">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        height="2.5rem">
+                        {{-- <circle cx="12" cy="12" r="10"></circle> --}}
+                        <path d="M9.09 9a3 3 0 1 1 3.91 2.83c-.45.18-.82.52-1 1v1"></path>
+                        <line x1="12" y1="17" x2="12" y2="17"></line>
+                    </svg>
+                </div>
+            </a>
+            <a class="bg-[#8c1717] text-white flex items-center justify-between py-3 px-5 gap-5 rounded-md hover:cursor-pointer font-semibold hover:opacity-80 w-full text-2xl">
+                <div class="rounded-full h-10 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        {{-- width="2rem"  --}}
+                        height="2.5rem">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M10 8l4 4-4 4"></path>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span>
+                        Lorem Ipsum
+                    </span>
+                    <span class="text-sm font-light">
+                        1 Hour
+                    </span>
+                </div>
+                <div class=" bg-white text-[#8c1717] rounded-full h-10 flex items-center justify-center lg:ml-40">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        height="2.5rem">
+                        {{-- <circle cx="12" cy="12" r="10"></circle> --}}
+                        <path d="M9.09 9a3 3 0 1 1 3.91 2.83c-.45.18-.82.52-1 1v1"></path>
+                        <line x1="12" y1="17" x2="12" y2="17"></line>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </x-frontend.c-section>
+    {{-- <x-frontend.c-section>
         <div>
             <x-frontend.c-paragraph 
                 :class="'text-neutral-200 text-shadow-sm'"
