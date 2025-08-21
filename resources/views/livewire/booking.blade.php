@@ -345,7 +345,7 @@ class extends Component {
             />
         </div>
     </x-frontend.c-section>
-    <x-frontend.c-section :gridColumn="2">
+    <x-frontend.c-section :gridColumn="2" class="!py-1">
         <div class=" bg-[#8c1717] text-white rounded-2xl pb-3 text-3xl ">
             <div class="flex justify-between items-center mb-4 py-3  [box-shadow:rgba(0,0,0,0.25)_0px_54px_55px,rgba(0,0,0,0.12)_0px_-12px_30px,rgba(0,0,0,0.12)_0px_4px_6px,rgba(0,0,0,0.17)_0px_12px_13px,rgba(0,0,0,0.09)_0px_-3px_5px] ">
                 <button wire:click="previousMonth" class="px-3 py-1 rounded font-bold hover:bg-[#0505048b] cursor-pointer">&lt;</button>
@@ -381,7 +381,7 @@ class extends Component {
         </div>
 
         <x-frontend.c-section class="!pb-0">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8">
                 <x-frontend.c-button 
                     :class="'bg-[#8c1717] rounded-md'"
                     :text="'9:00 AM'"
@@ -408,6 +408,33 @@ class extends Component {
                 />
             </div>
         </x-frontend.c-section>
+    </x-frontend.c-section>
+        <x-frontend.c-section :gridColumn="1" class="!py-5">
+        <div class="flex flex-col lg:flex-row items-center relative gap-6 mt-16">
+            <x-frontend.c-header-md
+                :class="'text-white text-shadow-lg'" 
+                :message="'Add your details'" 
+            />
+        </div>
+    </x-frontend.c-section>
+    <x-frontend.c-section :gridColumn="2" class="!py-1">
+        <form action="">
+            <div class="grid gap-2  max-w-sm">
+                <x-frontend.c-input 
+                    :placeholder="'Full Name'"
+                    :id="'full-name'"
+                />
+                <x-frontend.c-input 
+                    :placeholder="'Contact No.'"
+                    :id="'contact-number'"
+                />
+                <x-frontend.c-input 
+                    :placeholder="'Email'"
+                    :id="'email'"
+                    :type="'email'"
+                />
+            </div>
+        </form>
     </x-frontend.c-section>
     <br>
     <br>
