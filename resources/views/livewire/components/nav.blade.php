@@ -37,9 +37,9 @@ new class extends Component {
 
         <!-- Desktop nav: hidden on mobile -->
         <nav class="cvs-nav-desktop hidden lg:flex space-x-6 items-center font-semibold">
-            <a href="/about" class="text-neutral-400 hover:text-white transition-colors">About</a>
-            <a href="/library" class="text-neutral-400 hover:text-white transition-colors">Library</a>
-            <a href="/initiations" class="text-neutral-400 hover:text-white transition-colors">Initiations</a>
+            <a wire:navigate href="/about" class="text-neutral-400 hover:text-white transition-colors" wire:current="!text-white">About</a>
+            <a wire:navigate href="/library" class="text-neutral-400 hover:text-white transition-colors" wire:current="!text-white">Library</a>
+            <a wire:navigate href="/initiations" class="text-neutral-400 hover:text-white transition-colors" wire:current="!text-white">Initiations</a>
             <a wire:navigate href="/events" class="text-neutral-400 hover:text-white transition-colors" wire:current="!text-white">Events</a>
             <a wire:navigate href="/donate" class="text-neutral-400 hover:text-white transition-colors" wire:current="!text-white">Donate</a>
             <a href="/shop" class="text-neutral-400 hover:text-white transition-colors">Shop</a>
