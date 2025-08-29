@@ -12,7 +12,7 @@ new class extends Component {
 };
 ?>
 
-<div class="cvs-nav fixed w-full backdrop-blur-sm top-0 z-50">
+<div class="cvs-nav fixed w-full backdrop-blur-sm top-0 z-20">
     <div class="cvs-nav-container max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         <div class="text-2xl font-bold relative">
             <a wire:navigate href="/" class="text-white no-underline hover:text-white focus:text-white active:text-white">

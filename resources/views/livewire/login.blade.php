@@ -10,7 +10,7 @@ class extends Component {
     //
 }; ?>
 
-<div class="pt-20">
+<div class="pt-20 sm:pt-40">
     <x-frontend.c-section gridGap="8">
         <x-frontend.c-header-lg 
             :class="'text-white text-shadow-lg sm:!text-center'" 

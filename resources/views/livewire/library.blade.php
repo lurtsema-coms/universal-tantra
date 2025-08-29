@@ -6,6 +6,70 @@ new class extends Component {
     //
 }; ?>
 
-<div>
-    //
+<div class="pt-40">
+    <x-frontend.c-section>
+        <x-frontend.c-header-lg 
+            :class="'text-header text-shadow-lg text-3xl lg:!text-6xl sm:!text-center'" 
+            :message="'Library'" 
+        />
+        <x-frontend.c-paragraph 
+            :class="'text-neutral-200 text-shadow-sm !text-center max-w-4xl mx-auto'"
+            :message="'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum fuga ex officiis! Eos, possimus. Eum laboriosam aspernatur eos perferendis sunt.'"
+        />
+    </x-frontend.c-section>
+    <x-frontend.c-section class="!py-0 !max-w-3xl">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            <x-frontend.c-button 
+                :class="'bg-[#8c1717] rounded-md !text-[1.3rem]'"
+            >
+                View All
+            </x-frontend.c-button>
+            <x-frontend.c-button 
+                :class="'bg-[#8c1717] rounded-md !text-[1.3rem]'"
+            >
+                Videos
+            </x-frontend.c-button>
+            <x-frontend.c-button 
+                :class="'bg-[#8c1717] rounded-md !text-[1.3rem]'"
+            >
+                Audios
+            </x-frontend.c-button>
+            <x-frontend.c-button 
+                :class="'bg-[#8c1717] rounded-md !text-[1.3rem]'"
+            >
+                Read
+            </x-frontend.c-button>
+        </div>
+    </x-frontend.c-section>
+    <br>
+    <x-frontend.c-section>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-10">
+            @for ($i=0; $i<4; $i++)                
+                <div class="rounded-4xl border-2 border-[#A23636] bg-gradient-to-b from-[#8C1717] to-[#541111] p-8 relative">
+                    <img class="absolute right-8 top-0" src="{{ asset('img/not-saved.png') }}" alt="not-saved">
+                    <x-frontend.c-rounded-img 
+                        src="{{ asset('img/UT-Logo.png') }}" 
+                        alt="Profile Picture"
+                        divImgClass="mx-auto"
+                        borderWidth="4"
+                        borderGradient="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"
+                        imgClass="object-cover"
+                        imgMaxWidth="200px"
+                    />
+                    <br>
+                    <x-frontend.c-header-md 
+                        :class="'text-white text-shadow-lg lg:text-3xl text-center'" 
+                        :message="'Start the Daily Tantric Breath'" 
+                    />
+                    <br>
+                    <x-frontend.c-paragraph 
+                        :class="'text-center text-white'"
+                        :message="
+                            'Sign up for our free breathing altar-30seconds of ritual delivered every morning'
+                        " 
+                    />
+                </div>
+            @endfor
+        </div>
+    </x-frontend.c-section>
 </div>

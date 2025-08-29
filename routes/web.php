@@ -5,7 +5,7 @@ use Livewire\Volt\Volt;
 
 Volt::route('/' , 'home');
 Volt::route('/about' , 'about');
-Volt::route('/libary' , 'libary');
+Volt::route('/library' , 'library');
 Volt::route('/initiations' , 'initiations');
 Volt::route('/events' , 'events');
 Volt::route('/donate' , 'donate');

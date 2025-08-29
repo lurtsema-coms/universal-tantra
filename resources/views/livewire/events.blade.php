@@ -10,10 +10,10 @@ class extends Component {
     //
 }; ?>
 
-<div class="pt-20">
+<div class="pt-40">
     <x-frontend.c-section>
-        <x-frontend.c-header-lg 
-            :class="'text-[#fbb836] text-shadow-lg sm:!text-center'" 
+        <x-frontend.c-header-lg
+            :class="'text-header text-shadow-lg text-3xl lg:!text-6xl sm:!text-center'" 
             :message="'Events'" 
         />
         <div class="grid grid-cols-2 gap-8 max-w-4xl mx-auto w-full">
