@@ -11,16 +11,17 @@ class extends Component {
 }; ?>
 
 
-<div class="pt-20">
-    <x-frontend.c-section class="mt-16">
-        <div class="grid grid-cols-3 gap-8">
-            <div class="col-span-2">
+<div class="pt-10 sm:pt-20 relative overflow-hidden">
+    <x-frontend.c-bg1 />
+    <x-frontend.c-section class="mt-16 relative z-10">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
                 <x-frontend.c-header-md 
-                    :class="'text-white text-shadow-lg text-4xl'" 
+                    :class="'text-white text-shadow-lg md:text-4xl'" 
                     :message="'About'" 
                 />
                 <x-frontend.c-header-lg
-                    :class="'text-white text-shadow-lg'" 
+                    :class="'text-white text-shadow-lg !text-left text-4xl'" 
                     :message="'Mark Lurtsema'" 
                 />
                 <x-frontend.c-paragraph 
@@ -48,9 +49,18 @@ class extends Component {
                     :message="'That walk into the unknown—without ceremony, without scripture—was my first ritual of liberation.”'"
                 />
             </div>
+            <div class="mt-8 md:mt-0 flex justify-center lg:justify-end relative z-10">
+                <x-frontend.c-rounded-img 
+                    src="{{ asset('img/love-1.webp') }}" 
+                    alt="Profile Picture"
+                    hasBorder="true"
+                    imgClass="object-cover mx-auto"
+                    imgMaxWidth="360px"
+                />
+            </div>
         </div>
     </x-frontend.c-section>
-    <x-frontend.c-section>
+    <x-frontend.c-section class="relative z-10">
         <x-frontend.c-header-md 
             :class="'text-header text-shadow-lg text-4xl'" 
             :message="'The Crucible of Chaos: From Orders to Presence'" 
@@ -71,7 +81,7 @@ class extends Component {
             :message="'That was my second fire. The Crucible. The body forged by discipline—but kept alive by breath.”'"
         />
     </x-frontend.c-section>
-    <x-frontend.c-section>
+    <x-frontend.c-section class="relative z-10">
         <x-frontend.c-header-md 
             :class="'text-header text-shadow-lg text-2xl'" 
             :message="'The Illusion of the Light: '" 
@@ -126,7 +136,7 @@ class extends Component {
             :message="'Together, we built a life of ceremony—retreats shaped by firelight, conversations as sacraments, wild rivers as confessional. She stood beside me not to lead, but to walk—every ritual, every edge, every rite of silence and sigh.'"
         />
     </x-frontend.c-section>
-    <x-frontend.c-section>
+    <x-frontend.c-section class="relative z-10">
         <x-frontend.c-header-md 
             :class="'text-header text-shadow-lg text-4xl'" 
             :message="'Now: The Living Offering'" 
@@ -155,7 +165,7 @@ class extends Component {
             :message="'This is for warriors of presence. For those who are done asking for permission. For those who have walked away—and are ready to walk home.'"
         />
     </x-frontend.c-section>
-    <x-frontend.c-section>
+    <x-frontend.c-section class="relative z-10">
         <x-frontend.c-header-md 
             :class="'text-header text-shadow-lg text-4xl'" 
             :message="'The Invitation: Your Body Knows'" 
@@ -181,7 +191,7 @@ class extends Component {
             :message="'If you do not, that is okay. Because this is not a test, it is a homecoming.'"
         />
     </x-frontend.c-section>
-    <x-frontend.c-section>
+    <x-frontend.c-section class="relative z-10">
         <x-frontend.c-header-md 
             :class="'text-header text-shadow-lg text-4xl'" 
             :message="'Final Call: No More Scripts'" 
@@ -212,7 +222,7 @@ class extends Component {
             <li>A <span class="font-bold text-white">field</span> to remember who you were before the story was assigned</li>
         </ul>
     </x-frontend.c-section>
-    <x-frontend.c-section>
+    <x-frontend.c-section class="relative z-10">
         <x-frontend.c-header-md 
             :class="'text-header text-shadow-lg text-4xl'" 
             :message="'And Yes—Let It Flirt'" 
@@ -239,7 +249,7 @@ class extends Component {
             :message="'Let it be sacred. Let it be sovereign. Let it be yours.'"
         />
     </x-frontend.c-section>
-    <x-frontend.c-section>
+    <x-frontend.c-section class="relative z-10">
         <x-frontend.c-header-md 
             :class="'text-[#F6B7B7] text-shadow-lg text-4xl text-center'" 
             :message="'Come home.'" 

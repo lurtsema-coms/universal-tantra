@@ -21,15 +21,18 @@ new class extends Component {
     <div class="fixed inset-0 bg-gray-900/60 z-40">
         <div class="flex h-full w-full p-10 overflow-auto">
             <div class="w-full max-w-{{$maxWidth}} border border-gray-100/10 p-10 bg-gray-800 rounded-lg m-auto">
-                <x-frontend.c-rounded-img 
-                    src="{{ asset('img-icon/t-and-c.png') }}" 
-                    alt="Profile Picture"
-                    divImgClass="mx-auto"
-                    borderWidth="4"
-                    borderGradient="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"
-                    imgClass="object-cover"
-                    imgMaxWidth="50px"
-                />
+                <div class="w-full text-center">
+                    <x-frontend.c-rounded-img 
+                        src="{{ asset('img-icon/t-and-c.png') }}" 
+                        alt="Profile Picture"
+                        divImgClass="mx-auto"
+                        hasBorder="true"
+                        borderWidth="4"
+                        borderGradient="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"
+                        imgClass="object-cover"
+                        imgMaxWidth="50px"
+                    />
+                </div>
                 <br>
                 @if (!empty($title))             
                 <x-frontend.c-header-md 

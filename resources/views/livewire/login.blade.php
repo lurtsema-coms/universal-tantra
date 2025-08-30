@@ -10,10 +10,11 @@ class extends Component {
     //
 }; ?>
 
-<div class="pt-20 sm:pt-40">
-    <x-frontend.c-section gridGap="8">
+<div class="pt-20 sm:pt-40 relative">
+    <img class="object-cover h-full w-full absolute top-0" src="{{ asset('img/fire-bg.webp') }}" alt="">
+    <x-frontend.c-section class="relative z-10" gridGap="8">
         <x-frontend.c-header-lg 
-            :class="'text-white text-shadow-lg sm:!text-center'" 
+            :class="'text-[#E30E00] text-shadow-lg text-3xl lg:!text-6xl sm:!text-center'" 
             :message="'Enter The Temple'" 
         />
         <form action="">

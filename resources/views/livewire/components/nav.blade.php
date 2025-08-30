@@ -12,7 +12,12 @@ new class extends Component {
 };
 ?>
 
-<div class="cvs-nav fixed w-full backdrop-blur-sm top-0 z-20">
+<div 
+    x-data="{ scrolled: false }" 
+    x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 50)" 
+    :class="scrolled ? 'backdrop-blur-sm' : 'bg-transparent'" 
+    class="cvs-nav fixed w-full top-0 z-30 transition-all duration-300"
+>
     <div class="cvs-nav-container max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         <div class="text-2xl font-bold relative">
             <a wire:navigate href="/" class="text-white no-underline hover:text-white focus:text-white active:text-white">
@@ -37,12 +42,12 @@ new class extends Component {
 
         <!-- Desktop nav: hidden on mobile -->
         <nav class="cvs-nav-desktop hidden lg:flex space-x-6 items-center font-semibold">
-            <a wire:navigate href="/about" class="text-neutral-400 hover:text-white transition-colors" wire:current="!text-white">About</a>
-            <a wire:navigate href="/library" class="text-neutral-400 hover:text-white transition-colors" wire:current="!text-white">Library</a>
-            <a wire:navigate href="/initiations" class="text-neutral-400 hover:text-white transition-colors" wire:current="!text-white">Initiations</a>
-            <a wire:navigate href="/events" class="text-neutral-400 hover:text-white transition-colors" wire:current="!text-white">Events</a>
-            <a wire:navigate href="/donate" class="text-neutral-400 hover:text-white transition-colors" wire:current="!text-white">Donate</a>
-            <a href="/shop" class="text-neutral-400 hover:text-white transition-colors">Shop</a>
+            <a wire:navigate href="/about" class="text-neutral-200 hover:text-white transition-colors" wire:current="!text-white">About</a>
+            <a wire:navigate href="/library" class="text-neutral-200 hover:text-white transition-colors" wire:current="!text-white">Library</a>
+            <a wire:navigate href="/initiations" class="text-neutral-200 hover:text-white transition-colors" wire:current="!text-white">Initiations</a>
+            <a wire:navigate href="/events" class="text-neutral-200 hover:text-white transition-colors" wire:current="!text-white">Events</a>
+            <a wire:navigate href="/donate" class="text-neutral-200 hover:text-white transition-colors" wire:current="!text-white">Donate</a>
+            <a href="/shop" class="text-neutral-200 hover:text-white transition-colors">Shop</a>
             <a wire:navigate href="/booking" class="text-black bg-white px-8 rounded-full py-1 transition-opacity">Book a Session</a>
             <a wire:navigate href="/login" class="text-black bg-white px-8 rounded-full py-1 transition-opacity">Login</a>
         </nav>
@@ -62,13 +67,13 @@ new class extends Component {
                     <path d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
-            <a href="/about" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">About</a>
-            <a href="/library" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Library</a>
-            <a href="/initiations" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Initiations</a>
-            <a href="/events" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Events</a>
-            <a href="/donate" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Donate</a>
-            <a href="/shop" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Shop</a>
-            <a href="/login" class="bg-white text-black rounded-full px-8 py-1 text-center transition-opacity" onclick="toggleMenu()">Login</a>
+            <a wire:navigate href="/about" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">About</a>
+            <a wire:navigate href="/library" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Library</a>
+            <a wire:navigate href="/initiations" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Initiations</a>
+            <a wire:navigate href="/events" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Events</a>
+            <a wire:navigate href="/donate" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Donate</a>
+            <a wire:navigate href="/shop" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Shop</a>
+            <a wire:navigate href="/login" class="bg-white text-black rounded-full px-8 py-1 text-center transition-opacity" onclick="toggleMenu()">Login</a>
         </div>
     </div>
 </div>
