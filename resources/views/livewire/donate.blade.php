@@ -26,7 +26,7 @@ class extends Component {
         <x-frontend.c-section class="relative" :gridColumn="2">
             <div class="relative z-20 flex flex-col justify-center">
                 <x-frontend.c-header-lg 
-                    :class="'text-white text-shadow-lg text-left sm:text-center'" 
+                    :class="'text-white text-shadow-lg text-center lg:text-left'" 
                     :message="'Lorem ipsum dolor sit amet'" 
                 />
                 <x-frontend.c-paragraph 
