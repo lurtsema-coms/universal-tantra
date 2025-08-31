@@ -10,7 +10,7 @@
     </a>
 @else
     <button
-        type="button"
+        type="{{ $type ?? 'button' }}"
         {{ $attributes->merge([
             'class' => 'font-garamond text-white text-md sm:text-2xl rounded-full py-3 hover:cursor-pointer font-bold hover:opacity-80'
         ]) }}

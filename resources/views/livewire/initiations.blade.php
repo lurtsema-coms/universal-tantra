@@ -1,8 +1,12 @@
 <?php
 
 use Livewire\Volt\Component;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
-new class extends Component {
+new #[Layout('components.layouts.app')]
+#[Title('Universal Tantra | Initiations')] 
+class extends Component {
     //
 }; ?>
 

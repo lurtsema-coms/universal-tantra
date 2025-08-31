@@ -1,8 +1,12 @@
 <?php
 
 use Livewire\Volt\Component;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
-new class extends Component {
+new #[Layout('components.layouts.app')]
+#[Title('Universal Tantra | Library')] 
+class extends Component {
     //
 }; ?>
 
@@ -22,24 +26,27 @@ new class extends Component {
         <x-frontend.c-section class="!py-0 !max-w-3xl">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
                 <x-frontend.c-button 
-                    :class="'bg-[#8c1717] rounded-md !text-[1.3rem]'"
+                    :class="'flex items-center justify-center !font-semibold !font-raleway gap-4 bg-[#8c1717] rounded-md !text-[1.3rem]'"
                 >
                     View All
                 </x-frontend.c-button>
                 <x-frontend.c-button 
-                    :class="'bg-[#8c1717] rounded-md !text-[1.3rem]'"
+                    :class="'flex items-center justify-center !font-semibold !font-raleway gap-4 bg-[#2A2A2A] rounded-md !text-[1.3rem]'"
                 >
-                    Videos
+                    <img class="max-w-6" src="{{ asset('img-icon/player.png') }}" alt="player" />
+                    <span>Videos</span>
                 </x-frontend.c-button>
                 <x-frontend.c-button 
-                    :class="'bg-[#8c1717] rounded-md !text-[1.3rem]'"
+                    :class="'flex items-center justify-center !font-semibold !font-raleway gap-4 bg-[#2A2A2A] rounded-md !text-[1.3rem]'"
                 >
-                    Audios
+                    <img class="max-w-6" src="{{ asset('img-icon/sound.png') }}" alt="sound" />
+                    <span>Audios</span>
                 </x-frontend.c-button>
                 <x-frontend.c-button 
-                    :class="'bg-[#8c1717] rounded-md !text-[1.3rem]'"
+                    :class="'flex items-center justify-center !font-semibold !font-raleway gap-4 bg-[#2A2A2A] rounded-md !text-[1.3rem]'"
                 >
-                    Read
+                    <img class="max-w-6" src="{{ asset('img-icon/pen.png') }}" alt="pen" />
+                    <span>Read</span>
                 </x-frontend.c-button>
             </div>
         </x-frontend.c-section>
@@ -52,7 +59,7 @@ new class extends Component {
                         <x-frontend.c-rounded-img 
                             src="{{ asset('img/UT-Logo.png') }}" 
                             alt="Profile Picture"
-                            divImgClass="mx-auto"
+                            divImgClass="flex justify-center"
                             borderWidth="4"
                             borderGradient="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"
                             imgClass="object-cover"

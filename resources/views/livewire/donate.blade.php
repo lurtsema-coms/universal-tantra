@@ -69,8 +69,7 @@ class extends Component {
                 <div class="col-span-2 bg-[#8c1717] rounded-md flex items-center gap-8 px-8">
                     <span class="text-white text-2xl">$</span>
                     <x-frontend.c-input 
-                        :inputSectionClass="'w-full'"
-                        :class="'text-2xl'"
+                        :class="'text-2xl w-full'"
                         :placeholder="'Other Amount'"
                         :id="'donate-amount'"
                     />

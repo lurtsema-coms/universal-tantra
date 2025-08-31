@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 
 new #[Layout('components.layouts.app')]
-// #[Title('Universal Tantra | Booking')] 
+#[Title('Universal Tantra | Booking')] 
 class extends Component {
     public $currentMonth;
     public $currentYear;
@@ -39,7 +39,10 @@ class extends Component {
     $monthName = $startOfMonth->format('F Y');
 @endphp
 
-<div class="pt-40 overflow-hidden relative">
+<div 
+    x-data="{ modal: false }"
+    class="pt-40 overflow-hidden relative"
+>
     <x-frontend.c-bg1 :blur="true" />
     <div class="relative z-10">
         <x-frontend.c-section>
@@ -53,7 +56,7 @@ class extends Component {
             />
         </x-frontend.c-section>
         <x-frontend.c-section :gridColumn="1" class="!py-5">
-            <div class="flex flex-col lg:flex-row items-center relative gap-6 mt-16">
+            <div class="flex flex-col lg:flex-row items-center relative gap-6">
                 <x-frontend.c-header-md
                     :class="'text-white text-shadow-lg'" 
                     :message="'Select Service'" 
@@ -340,7 +343,7 @@ class extends Component {
             </div>
         </x-frontend.c-section>
             <x-frontend.c-section :gridColumn="1" class="!py-5">
-            <div class="flex flex-col lg:flex-row items-center relative gap-6 mt-16">
+            <div class="flex flex-col lg:flex-row items-center relative gap-6">
                 <x-frontend.c-header-md
                     :class="'text-white text-shadow-lg'" 
                     :message="'Select Date & Time'" 
@@ -411,22 +414,23 @@ class extends Component {
                 </div>
             </x-frontend.c-section>
         </x-frontend.c-section>
-            <x-frontend.c-section :gridColumn="1" class="!py-5">
+        <x-frontend.c-section :gridColumn="1" class="!py-5">
             <div class="flex flex-col lg:flex-row items-center relative gap-6 mt-16">
-                <x-frontend.c-header-md
+                <x-frontend.c-header-lg
                     :class="'text-white text-shadow-lg'" 
                     :message="'Add your details'" 
                 />
             </div>
         </x-frontend.c-section>
-        <x-frontend.c-section :gridColumn="2" class="!py-1">
-            <form action="">
-                <div class="grid gap-2  max-w-sm">
-                    <x-frontend.c-input 
+        <x-frontend.c-section :gridColumn="3" gridGap="8" class="!py-1">
+            <div class="col-span-1">
+                <div class="grid gap-2">
+                    <x-frontend.c-input
+                        class="!mt-0"
                         :placeholder="'Full Name'"
                         :id="'full-name'"
                     />
-                    <x-frontend.c-input 
+                    <x-frontend.c-input
                         :placeholder="'Contact No.'"
                         :id="'contact-number'"
                     />
@@ -436,11 +440,41 @@ class extends Component {
                         :type="'email'"
                     />
                 </div>
-            </form>
+            </div>
+            <div class="col-span-2">
+                <x-frontend.c-textarea
+                    class="h-45"
+                    textareaSectionClass="h-full"
+                    :placeholder="'Additional Notes'"
+                    :id="'additional-notes'"
+                />
+            </div>
+            <div class="col-span-3">
+                <div class="flex items-center justify-center gap-2">
+                    <input x-ref="session-checkbox" type="checkbox" class="my-2 h-5 w-5 bg-white rounded-md cursor-pointer">
+                    <label class="relative -top-[.5px] text-white">I agree to the <span x-on:click="modal = true" class="text-white font-bold cursor-pointer select-none">Terms & Condition</span></label>
+                </div>
+                <div class="flex">
+                    <x-frontend.c-button class="!text-black mx-auto mt-8 w-full max-w-76 bg-gradient-to-b from-[#FEBB37] to-[#FF8400]" text="BOOK A SESSION" />
+                </div>
+            </div>
         </x-frontend.c-section>
         <br>
         <br>
         <br>
     </div>
-</div>
+    <x-frontend.c-modal
+        x-show="modal"
+        :maxWidth="'xl'"
+        :title="'Terms and Conditions'" 
+        :subHeader="'Please read terms and condition.'"
+        :descriptions="[
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque labore obcaecati quibusdam quod soluta delectus, laboriosam, et ad optio distinctio aliquid doloribus nesciunt recusandae tenetur voluptate temporibus corrupti, esse minus',
+            'hahaha'
+        ]"
+        :canceled="'$refs[\'session-checkbox\'].checked = false'"
+        :confirmed="'$refs[\'session-checkbox\'].checked = true'"
+        :src="asset('img-icon/t-and-c.png')"
+        :alt="'Terms and Conditions Icon'"
+    />
 </div>

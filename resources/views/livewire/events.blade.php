@@ -21,6 +21,7 @@ class extends Component {
             @for ($index = 0; $index <4; $index++)                
                 <div>
                     <div class="h-65 bg-slate-800">
+                        <img src="{{ asset('img/meeting.webp') }}" alt="meeting" class="object-cover h-full w-full">
                     </div>
                     <div class="bg-[#8C1717] p-6">
                         <x-frontend.c-header-md 
