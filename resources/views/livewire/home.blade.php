@@ -35,12 +35,12 @@ class extends Component {
             </div>
         </div>
         <div class="absolute left-0 top-0 md:-top-30 w-full overflow-hidden">
-            <img class="w-full object-cover" 
+            <img class="opacity-35 sm:opacity-100 w-full object-cover" 
                 src="{{ asset('img/love.webp') }}" 
                 alt="fire-overlay">
         </div>
         <div class="absolute left-0 top-20 md:-bottom-70 w-full overflow-hidden">
-            <img class="opacity-60 w-full scale-125 object-cover mix-blend-screen select-none" 
+            <img class="opacity-35 sm:opacity-60 w-full scale-125 object-cover mix-blend-screen select-none" 
                 src="{{ asset('img/fire-overlay.webp') }}" 
                 alt="fire-overlay">
         </div>
