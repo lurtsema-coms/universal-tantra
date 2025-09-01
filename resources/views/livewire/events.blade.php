@@ -20,8 +20,14 @@ class extends Component {
         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mt-1 mx-auto w-full">
             @for ($index = 0; $index <4; $index++)                
                 <div>
-                    <div class="h-65 bg-slate-800">
-                        <img src="{{ asset('img/meeting.webp') }}" alt="meeting" class="object-cover h-full w-full">
+                    <div class="h-65">
+                        <img 
+                            src="{{ asset('img/meeting.webp') }}" 
+                            alt="meeting" 
+                            class="object-cover h-full w-full" 
+                            loading="lazy" 
+                            decoding="async"
+                        />
                     </div>
                     <div class="bg-[#8C1717] p-6">
                         <x-frontend.c-header-md 
