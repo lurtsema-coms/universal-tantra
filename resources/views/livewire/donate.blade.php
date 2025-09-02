@@ -26,7 +26,7 @@ class extends Component {
         <x-frontend.c-section class="relative" :gridColumn="2">
             <div class="relative z-20 flex flex-col justify-center">
                 <x-frontend.c-header-lg 
-                    :class="'text-white text-shadow-lg text-center lg:text-left'" 
+                    :class="'text-white text-shadow-lg lg:max-w-sm text-center lg:text-left'" 
                     :message="'Lorem ipsum dolor sit amet'" 
                 />
                 <x-frontend.c-paragraph 
@@ -37,7 +37,9 @@ class extends Component {
                 />
             </div>
             <div class="mt-16 lg:mt-0">
-                <img class="w-[45rem] top-6 right-0 lg:absolute" src="{{ asset('img/love-5.webp') }}" alt="love-5" />
+                <img class="hidden lg:block w-[45rem] object-top top-6 right-5 lg:absolute mix-blend-screen" src="{{ asset('img/love-6.webp') }}" alt="love-6" />
+                <img class="lg:hidden block w-[45rem] object-top top-6 right-5 lg:absolute mix-blend-screen" src="{{ asset('img/love-5.webp') }}" alt="love-5" />
+                {{-- <div class="bg-gradient-to-r from-black to-transparent h-full w-[35rem] top-6 right-40 lg:absolute"></div> --}}
             </div>
         </x-frontend.c-section>
         <x-frontend.c-section class="!pb-0">
