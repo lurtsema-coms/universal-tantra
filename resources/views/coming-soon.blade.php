@@ -18,7 +18,7 @@
                 :class="'text-neutral-200 text-shadow-sm !text-center max-w-2xl mx-auto'"
                 :message="'Where breath is invitation and presence awakens'"
             />
-            <img src="{{ asset('img/UT-Logo.png') }}" alt="UT Logo" class="max-w-64">
+            <img src="{{ asset('img/UT-Logo.png') }}" alt="UT Logo" class="max-w-64 mt-4">
         </div>
     </body>
 </html>
