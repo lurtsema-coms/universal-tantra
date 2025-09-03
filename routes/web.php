@@ -16,6 +16,7 @@ Volt::route('/reset-password/{token}', 'reset-password')->name('password.reset')
 Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('/dashboard' , 'dashboard');
     Volt::route('/admin-events' , 'admin/events');
+    Volt::route('/admin-events/add' , 'admin/events-add');
     Volt::route('/admin-library' , 'admin/library');
     Volt::route('/admin-shop' , 'admin/shop');
 });

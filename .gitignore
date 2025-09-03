@@ -16,6 +16,7 @@
 /public/hot
 /public/storage
 /public/video
+/public/img-events
 /storage/*.key
 /storage/pail
 /vendor

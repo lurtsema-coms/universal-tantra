@@ -1,0 +1,271 @@
+    <style>
+        body {
+            background: black;
+        }
+        .container {
+            width: 85%;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            line-height: 1.5em;
+        }
+        
+        .player-container {
+            margin-left: .3rem;
+            margin-right: .3rem;
+        }
+
+        .volume-control {
+            width: 25%;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .track-info {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #C1923E;
+            font-weight: 500;
+            margin-top: 15px;
+            font-weight: 800;
+            text-align: right;
+            padding: 0 !important;
+        }
+        
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #C1923E;
+            padding: .7rem 1rem;
+        }
+
+        .main-play {
+            display: flex;
+            width: 75%;
+            align-items: center;
+        }
+        
+        .play-button {
+            width: 40px;
+            height: 40px;
+            background-color: #EFBF04;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 15px solid #fff;
+        }
+        
+        .pause-icon {
+            display: none;
+            width: 16px;
+            height: 16px;
+            position: relative;
+        }
+        
+        .pause-icon:before, .pause-icon:after {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 16px;
+            background-color: #fff;
+            top: 0;
+        }
+        
+        .pause-icon:before {
+            left: 3px;
+        }
+        
+        .pause-icon:after {
+            right: 3px;
+        }
+        
+        #main-progress {
+            margin-left: .5rem;
+        }
+
+        .progress-container {
+            flex-grow: 1;
+            height: 6px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #EFBF04 0%, #F7D048 100%);
+            border-radius: 3px;
+            width: 0%;
+            position: relative;
+        }
+        
+        .time-display {
+            font-size: 12px;
+            color: #fff;
+            margin-left: 10px;
+        }
+        
+        .playlist-area {
+            max-height: 315px;
+            overflow-y: auto;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            margin-left: 1.3rem;
+            margin-right: 0.8rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .playlist-item:hover {
+            background-color: rgba(239, 191, 4, 0.15);
+        }
+
+        .playlist-item.active {
+            background-color: rgba(239, 191, 4, 0.15);
+        }
+        
+        .playlist-item.active .playlist-title {
+            color: #af7004;
+            font-weight: 800;
+        }
+        
+        .playlist-play-button {
+            width: 30px;
+            height: 30px;
+            background-color: #EFBF04;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .playlist-play-icon {
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 10px solid #fff;
+            margin-left: 2px;
+        }
+        
+        .playlist-title {
+            flex-grow: 1;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .download-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+        }
+        
+        .volume-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .volume-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+        
+        .volume-slider-container {
+            flex-grow: 1;
+            height: 4px;
+            background-color: #e0e0e0;
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+            width: 100px;
+        }
+        
+        .volume-slider {
+            height: 100%;
+            background-color: #EFBF04;
+            border-radius: 2px;
+            width: 100%;
+        }
+        
+        audio {
+            display: none;
+        }
+        
+        .playlist-area::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .playlist-area::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .playlist-area::-webkit-scrollbar-thumb {
+            background: #C1923E;
+            border-radius: 4px;
+        }
+        
+        .playlist-area::-webkit-scrollbar-thumb:hover {
+            background: #d9ac04;
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 10px 0;
+        }
+        
+        .footer {
+            background-color: #c1923e;
+            padding: 15px;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+    </style>
+
+    <div class="container">
+        <!-- Current Player -->
+        <div class="player-container">
+            <div style="margin-top: .3rem;"><img style="width: 100%; object-fit: cover; border-radius: 0.7rem;" src="https://josephl236.sg-host.com/wp-content/uploads/2025/05/Audio-Banner-v2.jpg" /></div>
+            <div id="ms-player-content">
+                [playlist artists="false" ids="6624,6640,6635,6626,6637,6646,6648,6627,6628,6645,6638,6634,6623,6632,6644"]
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <div class="footer">A VOICE FOR ALL REASONS</div>
+    </div>

@@ -4,7 +4,8 @@
     'id' => '',
     'error' => null,
     'placeholder' => '',
-    'type' => 'text'
+    'type' => 'text',
+    'isRequired' => false,
 ])
 
 @php
@@ -15,13 +16,20 @@
 @endphp
 
 <div class="{{ $inputSectionClass ?? 'w-full' }}">
-    <label for="{{ $id }}" class="text-white {{ $labelClass ?? '' }}">{{ $label ?? '' }}</label>
+    <label for="{{ $id }}" class="text-white {{ $labelClass }}">
+        {{ $label }}
+        @if($isRequired)
+            <x-frontend.c-required />
+        @endif
+    </label>
+
     <input 
+        id="{{ $id }}"
         placeholder="{{ $placeholder }}"
-        type="{{ $type }}" 
-        {{ $attributes->merge(['class' => $inputClasses]) }}
+        type="{{ $type }}"
+        {{ $attributes->merge(['class' => $inputClasses . ' placeholder:text-neutral-500 text-neutral-500']) }}
     >
-    
+
     {{-- Display the error message below the input --}}
     @if ($error)
         <p class="mt-1 text-red-500 text-sm">{{ $error }}</p>

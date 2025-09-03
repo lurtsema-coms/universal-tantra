@@ -18,9 +18,9 @@ new class extends Component {
     :class="scrolled ? 'backdrop-blur-sm' : 'bg-transparent'" 
     class="cvs-nav fixed w-full top-0 z-30 transition-all duration-300"
 >
-    <div class="cvs-nav-container max-w-6xl mx-auto px-4 sm:px-6 py-14 flex items-center relative justify-end">
-        <a wire:navigate href="/" class="text-white no-underline hover:text-white focus:text-white active:text-white absolute -top-6 left-0">
-            <img src="{{ asset('img/UT-Logo.png') }}" alt="UT Logo" class="max-w-18 sm:max-w-48">
+    <div class="cvs-nav-container max-w-6xl mx-auto px-4 sm:px-6 p-8 sm:py-14 flex items-center relative justify-end">
+        <a wire:navigate href="/" class="text-white no-underline hover:text-white focus:text-white active:text-white absolute sm:-top-6 -left-4">
+            <img src="{{ asset('img/UT-Logo.png') }}" alt="UT Logo" class="max-w-32 sm:max-w-48">
         </a>
 
         <!-- Hamburger menu: visible on mobile only -->

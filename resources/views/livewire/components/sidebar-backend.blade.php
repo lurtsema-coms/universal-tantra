@@ -25,7 +25,10 @@ new class extends Component {
                 <!-- Sidebar component, swap this element with another sidebar if you like -->
                 <div class="relative flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
                 <div class="relative flex h-16 shrink-0 items-center">
-                    <img src="{{ asset('img/UT-Logo.png') }}" alt="Universal Tantra Logo" class="h-16 w-auto relative top-1" />
+                    <a wire:navigate href="/">
+                        <img src="{{ asset('img/UT-Logo.png') }}" alt="Universal Tantra Logo" class="max-w-24 relative top-2 -left-5" />
+                    </a>
+                    <span class="text-white font-bold relative top-2 -left-4">Universal Tantra</span>
                 </div>
                 <nav class="relative flex flex-1 flex-col">
                     <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -89,7 +92,10 @@ new class extends Component {
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-black/10 px-6 pb-4">
             <div class="flex h-16 shrink-0 items-center">
-                <img src="{{ asset('img/UT-Logo.png') }}" alt="Universal Tantra Logo" class="h-16 w-auto relative top-1" />
+                <a wire:navigate href="/">
+                    <img src="{{ asset('img/UT-Logo.png') }}" alt="Universal Tantra Logo" class="max-w-24 relative top-2 -left-5" />
+                </a>
+                <span class="text-white font-bold relative top-2 -left-4">Universal Tantra</span>
             </div>
             <nav class="flex flex-1 flex-col">
                 <ul role="list" class="flex flex-1 flex-col gap-y-7">

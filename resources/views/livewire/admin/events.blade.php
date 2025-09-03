@@ -48,6 +48,7 @@ class extends Component
         <x-backend.c-button
             :class="'bg-black text-white shrink-0'"
             :text="'Add Event'"
+            :link="'/admin-events/add'"
         />
     </div>
     <div class="mt-2 flow-root">
@@ -59,7 +60,7 @@ class extends Component
                         <tr>
                             <x-table.th class="py-3.5 pr-3 pl-4 sm:pl-6" :text="'Title'" />
                             <x-table.th :text="'Description'" />
-                            <x-table.th :text="'Date'" />
+                            <x-table.th :text="'Event Date'" />
                             <x-table.th :text="'Created At'" />
                             <th scope="col" class="py-3.5 pr-4 pl-3 sm:pr-6">
                                 <span class="sr-only">Edit</span>
@@ -78,8 +79,8 @@ class extends Component
                                 <tr>
                                     <x-table.td :first="true" :text="$event->title" />
                                     <x-table.td :text="$event->description" />
-                                    <x-table.td :text="$event->date->format('M d, Y')" />
-                                    <x-table.td :text="$event->created_at->diffForHumans()" />
+                                    <x-table.td :text="\Carbon\Carbon::parse($event->date)->format('D, F Y')" />
+                                    <x-table.td :text="$event->created_at->format('D, F Y')" />
                                     <x-table.td :last="true">
                                         <a href="#" class="text-slate-600 hover:text-slate-900">Edit</a>
                                         <a href="#" class="ml-4 text-red-600 hover:text-red-900">Delete</a>
@@ -89,9 +90,9 @@ class extends Component
                         @endif
                     </tbody>
                 </table>
-                <div class="mt-4">
-                    {{ $events->links() }}
-                </div>
+            </div>
+            <div class="mt-4">
+                {{ $events->links() }}
             </div>
         </div>
         </div>
