@@ -1,17 +1,22 @@
 <?php
 
+use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 use Livewire\Volt\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Illuminate\Support\Facades\Storage;
 
 new #[Layout('components.layouts.app-backend')]
 #[Title('Universal Tantra | Admin Events')] 
 class extends Component 
 {
     use WithPagination;
+
+    #[Url]
+    public string $search = '';
 
     public function with() : array
     {
@@ -22,7 +27,23 @@ class extends Component
     
     public function loadEvent() 
     {
-        return Event::orderBy('id', 'desc')->paginate(10);
+        return Event::query()
+            ->when($this->search, function($query) {
+                $query->where('title', 'like', "%{$this->search}%")
+                    ->orWhere('description', 'like', "%{$this->search}%")
+                    ->orWhereRaw("DATE_FORMAT(date, '%a, %M %Y') like ?", ["%{$this->search}%"])
+                    ->orWhereRaw("DATE_FORMAT(created_at, '%a, %M %Y') like ?", ["%{$this->search}%"]);
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+    }
+
+
+    public function delete($id)
+    {
+        $event = Event::find($id);
+        Storage::disk('public')->delete('img-events/' . basename($event->img_path));
+        $event->delete();
     }
 }; ?>
 
@@ -44,6 +65,8 @@ class extends Component
             :class="'w-full max-w-sm shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
             :placeholder="'Search events...'"
             :id="'donate-amount'"
+            type="search"
+            wire:model.live.debounce.250ms="search"
         />
         <x-backend.c-button
             :class="'bg-black text-white shrink-0'"
@@ -70,8 +93,12 @@ class extends Component
                     <tbody class="divide-y divide-gray-200 bg-white">
                         @if ($events->isEmpty())
                             <tr>
-                                <td colspan="5" class="pt-4 text-sm text-center">
-                                    No events at the moment...
+                                <td colspan="5" class="py-4 text-sm text-center">
+                                    @if ($search)
+                                        No events match your search.
+                                    @else
+                                        No events have been created yet.
+                                    @endif
                                 </td>
                             </tr>
                         @else
@@ -82,8 +109,10 @@ class extends Component
                                     <x-table.td :text="\Carbon\Carbon::parse($event->date)->format('D, F Y')" />
                                     <x-table.td :text="$event->created_at->format('D, F Y')" />
                                     <x-table.td :last="true">
-                                        <a href="#" class="text-slate-600 hover:text-slate-900">Edit</a>
-                                        <a href="#" class="ml-4 text-red-600 hover:text-red-900">Delete</a>
+                                        <a wire:navigate href="/admin-events/edit/{{ $event->id }}" class="text-slate-600 hover:text-slate-900">Edit</a>
+                                        <button wire:click="delete({{ $event->id }})" class="ml-4 text-red-600 hover:text-red-900 cursor-pointer">
+                                            Delete
+                                        </button>
                                     </x-table.td>
                                 </tr>
                             @endforeach

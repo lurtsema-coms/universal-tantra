@@ -12,7 +12,7 @@ class extends Component {
 
 <div class="pt-25 sm:pt-40 relative overflow-hidden">
     <x-frontend.c-bg :blur="true"/>
-    <x-frontend.c-section>
+    <x-frontend.c-section class="relative z-10">
         <x-frontend.c-header-lg
             :class="'text-header text-shadow-lg text-3xl lg:!text-6xl sm:!text-center'" 
             :message="'Events'" 

@@ -13,6 +13,5 @@ class EventForm extends Form
     public string $date = "";
     #[Validate('required|string|min:3')]
     public string $description = "";
-    #[Validate('required|image|max:2048')]
     public $img_path = "";
 }

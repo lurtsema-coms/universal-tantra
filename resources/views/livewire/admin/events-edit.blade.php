@@ -9,6 +9,7 @@ use Livewire\Attributes\Title;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Livewire\Forms\EventForm;
+use Illuminate\Support\Facades\Storage;
 
 new #[Layout('components.layouts.app-backend')]
 #[Title('Universal Tantra | Admin Events')] 
@@ -17,35 +18,54 @@ class extends Component
     use WithFileUploads;
 
     public EventForm $form;
+    public $event;
+    public $new_img_path = "";
+    public $db_img_path = "";
+
+    public function mount($id)
+    {
+        $this->event = Event::findOrFail($id);
+        $this->form->title = $this->event->title;
+        $this->form->date = $this->event->date;
+        $this->form->description = $this->event->description;
+        $this->form->img_path = $this->event->img_path;
+        $this->db_img_path = $this->event->img_path;
+    }
 
     public function save()
     {
-        $this->validate([
-            'form.title' => 'required|string|min:3',
-            'form.date' => 'required|date',
-            'form.description' => 'required|string|min:3',
-            'form.img_path' => 'required|image|max:2048',
-        ]);
 
-        if ($this->form->img_path) {
-            // Generate unique filename (first 8 chars of UUID)
-            $uuid = substr(Str::uuid()->toString(), 0, 8);
-            $file_name = $uuid . '.' . $this->form->img_path->getClientOriginalExtension();
-            // Store publicly in /public/events
-            $this->form->img_path->storePubliclyAs('img-events', $file_name, 'public');
-            // Save full URL path
-            $this->form->img_path = url('img-events/' . $file_name);
+        $this->validate();
+
+        if(!$this->new_img_path) {
+            $this->validate(['form.img_path' => 'required']);
         }
 
-        Event::create($this->form->all());
+        if($this->new_img_path) {
+            $this->validate([
+                'new_img_path' => 'required|image|max:2048'
+            ]);
+            Storage::disk('public')->delete('img-events/' . basename($this->db_img_path));
+            $uuid = substr(Str::uuid()->toString(), 0, 8);
+            $file_name = $uuid . '.' . $this->new_img_path->getClientOriginalExtension();
+            $this->new_img_path->storePubliclyAs('img-events', $file_name, 'public');
+            $this->form->img_path = url('img-events/' . $file_name);
+        }
+        
+        $this->event->update($this->form->all());
+        $this->db_img_path = $this->event->img_path;
+        $this->reset('new_img_path');
 
-        $this->form->reset();
-        session()->flash('message', 'Event created successfully!');
+        session()->flash('message', 'Event updated successfully!');
     }
 
     public function removeImage()
     {
-        $this->reset('form.img_path');
+        if($this->new_img_path) {
+            $this->reset('new_img_path');
+        } else {
+            $this->reset('form.img_path');
+        }
     }
 }; ?>
 
@@ -58,7 +78,7 @@ class extends Component
             :class="'font-bold'"
             :message="
                 '
-                    Add Event
+                    Edit Event
                 '
             " 
         />
@@ -103,14 +123,32 @@ class extends Component
                     :label="'Upload Event Image'"
                     :labelClass="'!text-neutral-600 font-bold'"
                     :isRequired="true"
-                    wire:model="form.img_path"
-                    :error="$errors->first('form.img_path')"
+                    wire:model="new_img_path"
+                    :error="$errors->first('new_img_path') ?: $errors->first('form.img_path')"
                 />
-                @if ($form->img_path)
+
+                @if ($new_img_path)
                     <div class="relative inline-block rounded outline-1 outline-black/5 shadow-sm p-1 overflow-hidden hover:outline-slate-800/40">
                         <img 
                             class="h-36 w-36 object-cover rounded-xs" 
-                            src="{{ $form->img_path->temporaryUrl() }}" 
+                            src="{{ $new_img_path->temporaryUrl() }}" 
+                            alt="New Event Image Preview"
+                        />
+                        <button
+                            wire:click="removeImage"
+                            type="button"
+                            class="cursor-pointer absolute top-0 right-0"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 text-nuetral-600 p-2 rounded-bl-md bg-white hover:text-red-600">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                            </svg>
+                        </button>
+                    </div>
+                @elseif ($form->img_path)
+                    <div class="relative inline-block rounded outline-1 outline-black/5 shadow-sm p-1 overflow-hidden hover:outline-slate-800/40">
+                        <img 
+                            class="h-36 w-36 object-cover rounded-xs" 
+                            src="{{ $form->img_path }}" 
                             alt="Event Image Preview"
                         />
                         <button
@@ -128,7 +166,7 @@ class extends Component
                 <div class="flex">
                     <x-backend.c-button
                         :class="'bg-black mt-2 text-white ml-auto'"
-                        :text="'Add Event'"
+                        :text="'Update'"
                         type="submit"
                     />
                 </div>
