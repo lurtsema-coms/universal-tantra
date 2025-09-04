@@ -48,7 +48,7 @@ class extends Component
 }; ?>
 
 
-<div>
+<div x-data="{ modal: false, deletedId: null }">
     <x-frontend.c-header-md
         :message="'Events'" 
     />
@@ -110,7 +110,11 @@ class extends Component
                                     <x-table.td :text="$event->created_at->format('D, F Y')" />
                                     <x-table.td :last="true">
                                         <a wire:navigate href="/admin-events/edit/{{ $event->id }}" class="text-slate-600 hover:text-slate-900">Edit</a>
-                                        <button wire:click="delete({{ $event->id }})" class="ml-4 text-red-600 hover:text-red-900 cursor-pointer">
+                                        <button
+                                            x-on:click="modal=true; deleteId = $event.target.getAttribute('delete-id')"
+                                            :delete-id="{{ $event->id }}"
+                                            class="ml-4 text-red-600 hover:text-red-900 cursor-pointer"
+                                        >
                                             Delete
                                         </button>
                                     </x-table.td>
@@ -126,4 +130,18 @@ class extends Component
         </div>
         </div>
     </div>
+        <x-frontend.c-modal
+        x-show="modal"
+        :maxWidth="'xl'"
+        :title="'Delete Event'" 
+        :descriptions="[
+            'Are you sure you want to delete this event? This action cannot be undone',
+        ]"
+        :confirmed="'
+            $wire.delete(deleteId);
+        '"
+        :src="asset('img-icon/bin.png')"
+        :alt="'Delete Icon'"
+        :textConfirm="'Confirm'"
+    />
 </div>

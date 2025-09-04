@@ -7,6 +7,7 @@
     'confirmed' => null,
     'src' => null,
     'alt' => null,
+    'textConfirm' => 'I Agree'
 ])
 
 <div x-cloak {{ $attributes->merge(['class' => 'relative z-40']) }}>
@@ -56,7 +57,7 @@
                     <x-frontend.c-button 
                         x-on:click="modal = false; {!! $confirmed ?? '' !!}" 
                         class="!py-4 w-full bg-sky-600" 
-                        text="I Agree"
+                        text="{{ $textConfirm }}"
                     />
                 </div>
             </div>
