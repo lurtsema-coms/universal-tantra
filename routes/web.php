@@ -20,6 +20,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('/admin-events/edit/{id}' , 'admin/events-edit');
     Volt::route('/admin-library' , 'admin/library');
     Volt::route('/admin-shop' , 'admin/shop');
+    Volt::route('/admin-users' , 'admin/users');
 });
 
 Route::middleware('guest')->group(function () {
