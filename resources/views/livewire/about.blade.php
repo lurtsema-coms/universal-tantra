@@ -272,5 +272,9 @@ class extends Component {
             :class="'text-[#F6B7B7] text-shadow-lg text-xl text-right'" 
             :message="'—The Mystic Occasionally Known as Mark Lurtsema'" 
         />
+                <x-frontend.c-header-md 
+            :class="'text-[#F6B7B7] text-shadow-lg text-xl text-right'" 
+            :message="'(verb, not noun)'" 
+        />
     </x-frontend.c-section>
 </div>
