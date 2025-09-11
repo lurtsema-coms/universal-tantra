@@ -44,7 +44,7 @@ class extends Component {
         <x-backend.c-button
             :class="'bg-black text-white shrink-0'"
             :text="'Add Account'"
-            :link="'/admin-events/add'"
+            :link="'/admin-users/add'"
         />
     </div>
     <div class="mt-2 flow-root">
