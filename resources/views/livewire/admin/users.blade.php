@@ -4,11 +4,22 @@ use Livewire\Volt\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 new #[Layout('components.layouts.app-backend')]
 #[Title('Universal Tantra | Admin Users')] 
 class extends Component {
-    
+    public function with(): array
+    {
+        return [
+            'users'=> $this->loadUser()
+        ];
+    }
+    public function loadUser()
+    {
+        return User::all();
+    }
 }; ?>
 
 <div>
@@ -19,7 +30,7 @@ class extends Component {
         :class="'max-w-3xl'"
         :message="
             '
-                dasdsadasdasd users.
+                The User Account Settings Dashboard provides a centralized view of all user accounts, allowing admins to easily create new accounts, edit details, and deactivate users for better management and security.
             '
         " 
     />
@@ -45,17 +56,21 @@ class extends Component {
                             <tr>
                                 <x-table.th class="py-3.5 pr-3 pl-4 sm:pl-6" :text="'Email'" />
                                 <x-table.th :text="'Name'" />
-                                <x-table.th :text="'Email Verified'"/>
+                                <x-table.th :text="'Role'" />
+                                {{-- <x-table.th :text="'Email Verified'"/> --}}
                                 <x-table.th :text="'Created At'" />
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 bg-white">
-                            <tr>
-                                <x-table.td  :text="'test@example.com'" />
-                                <x-table.td  :text="'Test Example'" />
-                                <x-table.td  :text="'2025-08-18 18:07:07'" />
-                                <x-table.td  :text="'2025-08-18 18:07:08'" />
-                            </tr>
+                            @foreach ($users as $user)
+                                <tr>
+                                    <x-table.td  :text="$user->email"/>
+                                    <x-table.td  :text="$user->name"/>
+                                    <x-table.td  :text="$user->role" />
+                                    {{-- <x-table.td  :text="$user->email_verified_at" /> --}}
+                                    <x-table.td  :text="$user->created_at" />
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
