@@ -7,8 +7,8 @@ use Livewire\Volt\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Illuminate\Http\Request;
-use App\Models\Event;
-use App\Livewire\Forms\EventForm;
+use App\Models\User;
+use App\Livewire\Forms\AddUserForm;
 
 new #[Layout('components.layouts.app-backend')]
 #[Title('Universal Tantra | Admin Events')] 
@@ -16,11 +16,28 @@ class extends Component
 {
     use WithFileUploads;
 
-    // public EventForm $form;
+    public AddUserForm $form;
 
     public function save()
     {
 
+        $this->validate([
+            'form.firstname' => 'required|string',
+            'form.lastname' => 'required|string',
+            'form.email' => 'required|email',
+            'form.role' => 'required|string',
+        ]);
+
+        User::create([
+            'first_name' => $this->form->firstname,
+            'last_name' => $this->form->lastname,
+            'name' => $this->form->firstname. ' ' . $this->form->lastname,
+            'email' => $this->form->email,
+            'role' => $this->form->role,
+            'password' => Hash::make('qwerty123'),
+            
+        ]);
+        $this->form->reset();
         session()->flash('message', 'Event created successfully!');
     }
 
@@ -51,8 +68,8 @@ class extends Component
                         :id="'user-firstname'"
                         :isRequired="true"
                         type="text"
-                        {{-- wire:model="form.title" --}}
-                        {{-- :error="$errors->first('form.title')" --}}
+                        wire:model="form.firstname"
+                        :error="$errors->first('form.title')"
                     />
                     <x-frontend.c-input 
                         :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
@@ -62,8 +79,8 @@ class extends Component
                         :id="'user-lastname'"
                         :isRequired="true"
                         type="text"
-                        {{-- wire:model="form.title" --}}
-                        {{-- :error="$errors->first('form.title')" --}}
+                        wire:model="form.lastname"
+                        :error="$errors->first('form.lastname')"
                     />
                 </div>
                 <div class="grid md:grid-cols-2 gap-4">
@@ -75,8 +92,8 @@ class extends Component
                         :id="'user-email'"
                         :isRequired="true"
                         type="email"
-                        {{-- wire:model="form.title"
-                        :error="$errors->first('form.title')" --}}
+                        wire:model="form.email"
+                        :error="$errors->first('form.email')"
                     />
                     <x-frontend.c-select 
                         :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
@@ -87,6 +104,8 @@ class extends Component
                         :isRequired="true"
                         :options="['Admin', 'User']"
                         wire:model="form.role"
+                        :error="$errors->first('form.role')"
+
                     />
                 </div>
                 <div class="grid md:grid-cols-1 gap-4">
