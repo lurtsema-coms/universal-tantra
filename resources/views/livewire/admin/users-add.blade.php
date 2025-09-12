@@ -69,7 +69,7 @@ class extends Component
                         :isRequired="true"
                         type="text"
                         wire:model="form.firstname"
-                        :error="$errors->first('form.title')"
+                        :error="$errors->first('form.firstname')"
                     />
                     <x-frontend.c-input 
                         :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"

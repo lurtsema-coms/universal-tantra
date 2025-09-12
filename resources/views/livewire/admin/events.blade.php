@@ -85,9 +85,10 @@ class extends Component
                             <x-table.th :text="'Description'" />
                             <x-table.th :text="'Event Date'" />
                             <x-table.th :text="'Created At'" />
-                            <th scope="col" class="py-3.5 pr-4 pl-3 sm:pr-6">
+                            <x-table.th :text="'Action'" />
+                            {{-- <th scope="col" class="py-3.5 pr-4 pl-3 sm:pr-6">
                                 <span class="sr-only">Edit</span>
-                            </th>
+                            </th> --}}
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white">
@@ -108,7 +109,7 @@ class extends Component
                                     <x-table.td :text="$event->description" />
                                     <x-table.td :text="\Carbon\Carbon::parse($event->date)->format('D, F Y')" />
                                     <x-table.td :text="$event->created_at->format('D, F Y')" />
-                                    <x-table.td :last="true">
+                                    <x-table.td>
                                         <a wire:navigate href="/admin-events/edit/{{ $event->id }}" class="text-slate-600 hover:text-slate-900">Edit</a>
                                         <button
                                             x-on:click="modal=true; deleteId = $event.target.getAttribute('delete-id')"
