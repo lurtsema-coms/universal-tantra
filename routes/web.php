@@ -22,6 +22,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('/admin-shop' , 'admin/shop');
     Volt::route('/admin-users' , 'admin/users');
     Volt::route('/admin-users/add' , 'admin/users-add');
+    Volt::route('/admin-users/edit/{id}','admin/users-edit');
 });
 
 Route::middleware('guest')->group(function () {

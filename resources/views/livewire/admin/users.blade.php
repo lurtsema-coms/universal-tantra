@@ -57,8 +57,8 @@ class extends Component {
                                 <x-table.th class="py-3.5 pr-3 pl-4 sm:pl-6" :text="'Email'" />
                                 <x-table.th :text="'Name'" />
                                 <x-table.th :text="'Role'" />
-                                {{-- <x-table.th :text="'Email Verified'"/> --}}
                                 <x-table.th :text="'Created At'" />
+                                <x-table.th :text="'Action'" />
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 bg-white">
@@ -67,8 +67,10 @@ class extends Component {
                                     <x-table.td  :text="$user->email"/>
                                     <x-table.td  :text="$user->name"/>
                                     <x-table.td  :text="$user->role" />
-                                    {{-- <x-table.td  :text="$user->email_verified_at" /> --}}
                                     <x-table.td  :text="$user->created_at" />
+                                    <x-table.td>
+                                        <a wire:navigate href="/admin-users/edit/{{$user->id}}" class=" text-slate-600 hover:text-slate-900">Edit</a>
+                                    </x-table.td>
                                 </tr>
                             @endforeach
                         </tbody>
