@@ -24,7 +24,6 @@ class UserSeeder extends Seeder
                 'password'   => bcrypt('password'),
             ]
         );
-
         User::updateOrCreate(
             ['email' => 'test@user.com'],
             [
@@ -34,6 +33,17 @@ class UserSeeder extends Seeder
                 'email'      => 'test@user.com',
                 'role'       => 'User',
                 'password'   => bcrypt('password'),
+            ]
+        );
+        User::updateOrCreate(
+            ['email' => 'test@user.com'],
+            [
+                'first_name' => 'Info',
+                'last_name'  => 'Lurtsemacommunications',
+                'name'       => 'Info Lurtsemacommunications',
+                'email'      => 'info@lurtsemacommunications.com',
+                'role'       => 'Admin',
+                'password'   => bcrypt('universalTANTRA!2025!'),
             ]
         );
     }
