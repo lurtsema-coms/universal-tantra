@@ -9,6 +9,7 @@ Volt::route('/library' , 'library');
 Volt::route('/initiations' , 'initiations');
 Volt::route('/events' , 'events');
 Volt::route('/donate' , 'donate');
+Volt::route('/shop' , 'shop');
 Volt::route('/booking' , 'booking');
 Volt::route('/forgot-password', 'forgot-password')->name('password.request');
 Volt::route('/reset-password/{token}', 'reset-password')->name('password.reset');
