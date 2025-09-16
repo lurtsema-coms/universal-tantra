@@ -33,8 +33,12 @@ class extends Component {
     <img class="object-cover h-full w-full absolute top-0" src="{{ asset('img/fire-bg.webp') }}" alt="">
     <x-frontend.c-section class="relative z-10" gridGap="8">
         <x-frontend.c-header-lg 
-            :class="'text-[#E30E00] text-shadow-lg text-3xl lg:!text-6xl sm:!text-center'" 
+            :class="'text-[#E30E00] text-shadow-lg text-3xl lg:!text-6xl !mb-0 sm:!text-center'" 
             :message="'Enter The Temple'" 
+        />
+        <x-frontend.c-paragraph
+            :class="'text-neutral-300 text-shadow-sm !text-center !px-0 mx-auto !gap-1 sm:!px-12'"
+            :message="'This is your gateway into the living field of Universal Tantra. Members receive access to exclusive rituals, ongoing practices, and a community devoted to breath, touch, and presence.'"
         />
         <form wire:submit="login">
             <div class="grid gap-2 mx-auto max-w-sm">
@@ -72,7 +76,7 @@ class extends Component {
         <div class="my-4 w-full h-[1px] bg-white"></div>
         <x-frontend.c-header-md 
             :class="'text-white text-shadow-lg text-center'" 
-            :message="'Don\'t you have an account?'" 
+            :message="'New to the temple? Sign up and begin your initiation.'" 
         />
         <x-frontend.c-button :link="'/register'" class="!text-black mx-auto w-full max-w-sm bg-gradient-to-b from-[#FEBB37] to-[#FF8400]" text="CREATE AN ACCOUNT" />
     </x-frontend.c-section>
