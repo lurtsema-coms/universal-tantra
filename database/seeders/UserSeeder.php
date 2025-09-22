@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
             ]
         );
         User::updateOrCreate(
-            ['email' => 'test@user.com'],
+            ['email' => 'info@lurtsemacommunications.com'],
             [
                 'first_name' => 'Info',
                 'last_name'  => 'Lurtsemacommunications',
