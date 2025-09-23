@@ -10,6 +10,9 @@ use App\Models\User;
 new #[Layout('components.layouts.app-backend')]
 #[Title('Universal Tantra | Admin Users')] 
 class extends Component {
+
+    public string $search = '';
+
     public function with(): array
     {
         return [
@@ -18,8 +21,19 @@ class extends Component {
     }
     public function loadUser()
     {
-        return User::where('id', '!=', Auth::id())->get(); 
+        // return User::where('id', '!=', Auth::id())->get(); 
         // return User::all();
+        return User::query()
+            ->when($this->search, function ($query) {
+                $query->where(function ($q) {
+                    $q->where('email', 'like', "%{$this->search}%")
+                        ->orWhere('name', 'like', "%{$this->search}%")
+                        ->orWhereRaw("DATE_FORMAT(created_at, '%a, %M %Y') like ?", ["%{$this->search}%"]);
+                });
+            })
+            ->where('id', '!=', Auth::id()) 
+            ->orderBy('id', 'desc')
+            ->paginate(10);
     }
     public function deleteUser($id)
     {
@@ -68,26 +82,41 @@ class extends Component {
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 bg-white">
-                            @foreach ($users as $user)
+                            @if ($users->isEmpty())
                                 <tr>
-                                    <x-table.td  :text="$user->email"/>
-                                    <x-table.td  :text="$user->name"/>
-                                    <x-table.td  :text="$user->role" />
-                                    <x-table.td  :text="$user->created_at" />
-                                    <x-table.td>
-                                        <a wire:navigate href="/admin-users/edit/{{$user->id}}" class=" text-slate-600 hover:text-slate-900">Edit</a>
-                                        <button
-                                            x-on:click="modal=true; deleteId = $event.target.getAttribute('delete-id')"
-                                            :delete-id="{{$user->id}}"
-                                            class="ml-4 text-red-600 hover:text-red-900 cursor-pointer"
-                                        >
-                                            Delete
-                                        </button>
-                                    </x-table.td>
+                                    <td colspan="5" class="py-4 text-sm text-center">
+                                        @if ($search)
+                                            No events match your search.
+                                        @else
+                                            No events have been created yet.
+                                        @endif
+                                    </td>
                                 </tr>
-                            @endforeach
+                            @else
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <x-table.td  :text="$user->email"/>
+                                        <x-table.td  :text="$user->name"/>
+                                        <x-table.td  :text="$user->role" />
+                                        <x-table.td  :text="$user->created_at" />
+                                        <x-table.td>
+                                            <a wire:navigate href="/admin-users/edit/{{$user->id}}" class=" text-slate-600 hover:text-slate-900">Edit</a>
+                                            <button
+                                                x-on:click="modal=true; deleteId = $event.target.getAttribute('delete-id')"
+                                                :delete-id="{{$user->id}}"
+                                                class="ml-4 text-red-600 hover:text-red-900 cursor-pointer"
+                                            >
+                                                Delete
+                                            </button>
+                                        </x-table.td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
+                </div>
+                <div class="mt-4">
+                    {{ $users->links() }}
                 </div>
             </div>
         </div>
