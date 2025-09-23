@@ -71,7 +71,7 @@ class extends Component {
                 <x-frontend.c-section>
                     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 gap-y-10">
                         @for ($i=0; $i<4; $i++)                
-                            <div class="rounded-4xl border-2 border-[#A23636] bg-gradient-to-b from-[#8C1717] to-[#541111] p-8 relative">
+                            <div class="rounded-4xl border-2 border-[#A23636] bg-gradient-to-b from-[#8C1717] to-[#541111] p-8 relative cursor-pointer transform transition-transform duration-300 hover:scale-105">
                                 <img class="absolute right-8 top-0" src="{{ asset('img/not-saved.png') }}" alt="not-saved">
                                 <x-frontend.c-rounded-img 
                                     src="{{ asset('img/UT-Logo.png') }}" 

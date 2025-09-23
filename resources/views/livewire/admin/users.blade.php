@@ -18,11 +18,17 @@ class extends Component {
     }
     public function loadUser()
     {
-        return User::all();
+        return User::where('id', '!=', Auth::id())->get(); 
+        // return User::all();
+    }
+    public function deleteUser($id)
+    {
+        $deleteUser = User::findOrFail($id);
+        $deleteUser->delete();
     }
 }; ?>
 
-<div>
+<div x-data="{ modal: false, deletedId: null }">
     <x-frontend.c-header-md
         :message="'Users'" 
     />
@@ -70,6 +76,13 @@ class extends Component {
                                     <x-table.td  :text="$user->created_at" />
                                     <x-table.td>
                                         <a wire:navigate href="/admin-users/edit/{{$user->id}}" class=" text-slate-600 hover:text-slate-900">Edit</a>
+                                        <button
+                                            x-on:click="modal=true; deleteId = $event.target.getAttribute('delete-id')"
+                                            :delete-id="{{$user->id}}"
+                                            class="ml-4 text-red-600 hover:text-red-900 cursor-pointer"
+                                        >
+                                            Delete
+                                        </button>
                                     </x-table.td>
                                 </tr>
                             @endforeach
@@ -79,4 +92,18 @@ class extends Component {
             </div>
         </div>
     </div>
+    <x-frontend.c-modal
+        x-show="modal"
+        :maxWidth="'xl'"
+        :title="'Delete User'" 
+        :descriptions="[
+            'Are you sure you want to delete this user? This action cannot be undone',
+        ]"
+        :confirmed="'
+            $wire.deleteUser(deleteId);
+        '"
+        :src="asset('img-icon/bin.png')"
+        :alt="'Delete Icon'"
+        :textConfirm="'Confirm'"
+    />
 </div>

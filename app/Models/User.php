@@ -52,6 +52,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function scopeOnlyAdmins($query)
+    {
+        return $query->where('role', 'admin');
+    }
+
     protected static function booted()
     {
         static::creating(function ($user) {
