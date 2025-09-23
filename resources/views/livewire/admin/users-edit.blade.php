@@ -21,7 +21,6 @@ class extends Component
     public function mount($id)
     {
         $this->user = User::findOrFail($id);
-        // dd($this->user);
         $this->form->firstname = $this->user->first_name;
         $this->form->lastname = $this->user->last_name;
         $this->form->email = $this->user->email;
@@ -31,6 +30,19 @@ class extends Component
 
     public function save()
     {
+        $this->validate([
+            'form.firstname' => 'required|string|max:255',
+            'form.lastname' => 'required|string|max:255',
+            'form.email' => 'required|email|unique:users,email,' . $this->user->id,
+            'form.role' => 'required|string|max:255',
+        ]);
+
+        $this->user->update([
+            'first_name' => $this->form->firstname,
+            'last_name' => $this->form->lastname,
+            'email' => $this->form->email,
+            'role' => $this->form->role,
+        ]);
 
 
         session()->flash('message', 'Event updated successfully!');
