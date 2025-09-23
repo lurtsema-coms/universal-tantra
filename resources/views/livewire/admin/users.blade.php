@@ -5,13 +5,21 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Livewire\WithPagination;
 
 
 new #[Layout('components.layouts.app-backend')]
 #[Title('Universal Tantra | Admin Users')] 
 class extends Component {
 
+    use WithPagination;
+
     public string $search = '';
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     public function with(): array
     {
