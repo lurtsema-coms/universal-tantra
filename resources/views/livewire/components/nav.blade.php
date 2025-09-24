@@ -47,7 +47,11 @@ new class extends Component {
             <a wire:navigate href="/donate" class="text-neutral-200 hover:text-white transition-colors" wire:current="!text-white">Donate</a>
             <a wire:navigate href="/shop" class="text-neutral-200 hover:text-white transition-colors">Shop</a>
             <a wire:navigate href="/booking" class="text-black bg-white px-8 rounded-full py-1 transition-opacity hover:opacity-70">Book a Session</a>
-            <a wire:navigate href="/login" class="text-black bg-white px-8 rounded-full py-1 transition-opacity hover:opacity-70">Login</a>
+            @auth
+                <a wire:navigate href="/login" class="text-black bg-white px-8 rounded-full py-1 transition-opacity hover:opacity-70">Dashboard</a>
+            @else
+                <a wire:navigate href="/login" class="text-black bg-white px-8 rounded-full py-1 transition-opacity hover:opacity-70">Login</a>
+            @endauth
         </nav>
     </div>
 
@@ -71,7 +75,11 @@ new class extends Component {
             <a wire:navigate href="/events" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Events</a>
             <a wire:navigate href="/donate" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Donate</a>
             <a wire:navigate href="#" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Shop</a>
-            <a wire:navigate href="/login" class="bg-white text-black rounded-full px-8 py-1 text-center transition-opacity" onclick="toggleMenu()">Login</a>
+            @auth
+                <a wire:navigate href="/login" class="bg-white text-black rounded-full px-8 py-1 text-center transition-opacity" onclick="toggleMenu()">Dashboard</a>
+            @else
+                <a wire:navigate href="/login" class="bg-white text-black rounded-full px-8 py-1 text-center transition-opacity" onclick="toggleMenu()">Login</a>
+            @endauth
         </div>
     </div>
 </div>
