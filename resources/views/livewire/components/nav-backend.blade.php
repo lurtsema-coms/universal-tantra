@@ -56,8 +56,8 @@ new class extends Component {
             <div class="relative" x-data="{ open: false }">
                 <button @click="open = !open" type="button" class="relative flex items-center focus:outline-none cursor-pointer">
                     <img src="{{ asset('img-icon/admin.png') }}"
-                         alt="User avatar"
-                         class="size-8 rounded-full bg-gray-50 -outline-offset-1 outline-black/5" />
+                        alt="User avatar"
+                        class="size-8 rounded-full bg-gray-50 -outline-offset-1 outline-black/5" />
                     <span class="hidden lg:flex lg:items-center">
                         <span class="ml-4 text-sm font-semibold text-gray-600">{{ auth()->user()->name }}</span>
                         <svg viewBox="0 0 20 20" fill="currentColor" class="ml-2 size-5 text-gray-400">
@@ -73,7 +73,7 @@ new class extends Component {
                     x-transition 
                     class="absolute right-0 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-black/5"
                 >
-                    <a href="#" class="block px-3 py-1 text-sm text-gray-900 hover:bg-gray-50 cursor-pointer">Your profile</a>
+                    <a wire:navigate href="/profile" class="block px-3 py-1 text-sm text-gray-900 hover:bg-gray-50 cursor-pointer">Your profile</a>
                     <button 
                         wire:click="logout" 
                         class="block w-full text-left px-3 py-1 text-sm text-gray-900 hover:bg-gray-50 cursor-pointer"
