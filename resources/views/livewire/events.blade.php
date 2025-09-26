@@ -3,11 +3,23 @@
 use Livewire\Volt\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use App\Models\Event;
 
 new #[Layout('components.layouts.app')]
 #[Title('Universal Tantra | Events')] 
 class extends Component {
     //
+    public function with(): array
+    {
+        return [
+            'events' => $this->loadEvent(),
+        ];
+    }
+    public function loadEvent()
+    {
+        // dd(Event::where('date', '>=', date('Y-m-d'))->get());
+        return Event::where('date', '>=', date('Y-m-d'))->get();
+    }
 }; ?>
 
 <div class="pt-25 sm:pt-40 relative overflow-hidden">
@@ -18,7 +30,7 @@ class extends Component {
             :message="'Events'" 
         />
         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mt-1 mx-auto w-full">
-            @for ($index = 0; $index <4; $index++)                
+            @foreach ($events as $event)                
                 <div>
                     <div class="h-65">
                         <img 
@@ -32,11 +44,11 @@ class extends Component {
                     <div class="bg-[#8C1717] p-6">
                         <x-frontend.c-header-md 
                             :class="'text-white text-shadow-lg'" 
-                            :message="'Lorem ipsum dolor.'" 
+                            :message="$event->title" 
                         />
                         <x-frontend.c-paragraph 
                             :class="'text-white text-shadow-sm'"
-                            :message="'January 20, 2025'"
+                            :message="date('F j, Y', strtotime($event->date))"
                         />
                         <x-frontend.c-paragraph 
                             :class="'text-white text-shadow-sm mt-2'"
@@ -44,7 +56,7 @@ class extends Component {
                         />
                     </div>
                 </div>
-            @endfor
+            @endforeach
         </div>
     </x-frontend.c-section>
 </div>
