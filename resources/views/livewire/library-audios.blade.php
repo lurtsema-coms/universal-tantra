@@ -36,23 +36,23 @@
                     </div>
                 </div>
             @endfor
-            <div class="flex flex-row items-center justify-center gap-20 px-5 mt-4">
+            <div class="flex flex-row items-center justify-center gap-2 lg:gap-20 px-5 mt-10">
                 <button
-                    class="bg-[#8c1717] p-2 text-white rounded-md disabled:bg-[#00457a92]"
+                    class="bg-[#8c1717] p-2 px-6 text-white rounded-md disabled:bg-[#380e0e]"
                     :disabled="" 
                     >
-                    Previous
+                    Prev Page
                 </button>
                 
-                <span class="text-gray-500">
+                <span class="text-white">
                     Page 
                 </span>
                 
                 <button
-                    class="bg-[#8c1717] p-2 text-white rounded-md disabled:bg-[#00457a92]"
+                    class="bg-[#8c1717] p-2 px-6 text-white rounded-md disabled:bg-[#380e0e]"
                     :disabled="" 
                     >
-                    Next
+                    Next Page
                 </button>
             </div>
         </div>
