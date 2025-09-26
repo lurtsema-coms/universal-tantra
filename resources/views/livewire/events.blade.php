@@ -22,7 +22,7 @@ class extends Component {
     }
     public function loadEvent()
     {
-        return Event::where('date', '>=', date('Y-m-d'))->orderBy('date', 'desc')->paginate(10);
+        return Event::where('date', '>=', date('Y-m-d'))->orderBy('date', 'asc')->paginate(10);
     }
 }; ?>
 
