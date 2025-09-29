@@ -392,7 +392,7 @@ class extends Component {
                     </div>
                     <div class="flex justify-center mt-8 lg:mt-0 items-center lg:justify-end">
                         <img
-                            class="max-w-96 object-contain"
+                            class="object-contain w-80 lg:w-96"
                             src="{{ asset('img/bell.webp') }}" 
                             alt="bell"
                         />
