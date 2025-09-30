@@ -61,7 +61,10 @@ class extends Component {
                     :label="'Stay Logged In'"
                     :id="'login-remember'"
                 />
-                <x-frontend.c-button type="submit" class="mt-4 w-full bg-gradient-to-b from-red-700 to-red-900" text="ENTER THE TEMPLE" />
+                <x-frontend.c-button type="submit" class="mt-4 w-full bg-gradient-to-b from-red-700 to-red-900">
+                    <span wire:loading.remove wire:target="login">ENTER THE TEMPLE</span>
+                    <x-frontend.c-spinner target="login" />
+                </x-frontend.c-button>
                 @if (session('status'))
                     <div class="mt-2 text-center text-sm text-green-400">
                         {{ session('status') }}
