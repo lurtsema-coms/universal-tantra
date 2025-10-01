@@ -73,7 +73,7 @@ new class extends Component {
                     x-transition 
                     class="absolute right-0 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-black/5"
                 >
-                    <a wire:navigate href="/profile" class="block px-3 py-1 text-sm text-gray-900 hover:bg-gray-50 cursor-pointer">Your profile</a>
+                    <a wire:navigate href="/profile/{{ auth()->user()->id }}" class="block px-3 py-1 text-sm text-gray-900 hover:bg-gray-50 cursor-pointer">Your profile</a>
                     <button 
                         wire:click="logout" 
                         class="block w-full text-left px-3 py-1 text-sm text-gray-900 hover:bg-gray-50 cursor-pointer"

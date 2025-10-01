@@ -4,11 +4,39 @@ use Livewire\Volt\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 new #[Layout('components.layouts.app-backend')]
 #[Title('Universal Tantra | Profile')] 
 class extends Component {
-    
+    public $user;
+    public $form = [
+        'firstname' => '',
+        'lastname' => '',
+        'email' => '',
+        'currentpassword' => '',
+        'newpassword' => '',
+        'confirmpassword' => '',
+
+    ];
+
+    public function mount ($id)
+    {
+        $this->user = User::findOrFail($id);
+
+        $this->form['firstname'] = $this->user->first_name;
+        $this->form['lastname'] = $this->user->last_name;
+        $this->form['email'] = $this->user->email;
+        // dd($this->form['email']);
+    }
+
+    public function saveName()
+    {
+        $this->validate([
+            'form.firstname'
+        ]);
+    }
+
 }; ?>
 
 <div>
@@ -67,7 +95,6 @@ class extends Component {
                 :label="'First Name'"
                 :labelClass="'!text-neutral-600 font-bold'"
                 :placeholder="'Enter first name'"
-                :id="'user-firstname'"
                 :isRequired="true"
                 type="text"
                 wire:model="form.firstname"

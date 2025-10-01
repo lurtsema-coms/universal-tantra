@@ -41,6 +41,6 @@ Route::middleware(['auth', 'verified', 'role:Admin'])->group(function () {
 //Both-accounts routes
 Route::middleware(['auth', 'verified', 'role:Admin,User'])->group(function () {
     Volt::route('/dashboard', 'dashboard');
-    Volt::route('/profile', 'profile');
+    Volt::route('/profile/{id}', 'profile');
 
 });
