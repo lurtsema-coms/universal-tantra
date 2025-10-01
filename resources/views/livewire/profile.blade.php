@@ -14,6 +14,7 @@ class extends Component {
         'firstname' => '',
         'lastname' => '',
         'email' => '',
+        'role' => '',
         'currentpassword' => '',
         'newpassword' => '',
         'confirmpassword' => '',
@@ -27,14 +28,26 @@ class extends Component {
         $this->form['firstname'] = $this->user->first_name;
         $this->form['lastname'] = $this->user->last_name;
         $this->form['email'] = $this->user->email;
+        $this->form['role'] = $this->user->role;
         // dd($this->form['email']);
     }
 
     public function saveName()
     {
         $this->validate([
-            'form.firstname'
+            'form.firstname' => 'required|string|max:255',
+            'form.lastname' => 'required|string|max:255',
+            'form.email' => 'required|email|unique:users,email,' . $this->user->id,
         ]);
+
+        $this->user->update([
+            'first_name' => $this->form['firstname'],
+            'last_name' => $this->form['lastname'],
+            'email' => $this->form['email'],
+        ]);
+
+        session()->flash('message', 'Account Name updated successfully!');
+
     }
 
 }; ?>
@@ -85,72 +98,78 @@ class extends Component {
             </div>
         </div>
         <hr class=" border-neutral-300">
-        <x-frontend.c-header-md
-            :message="'Full Name'"
-            class="py-5"
-        />
-        <div class="flex items-center gap-5">
-            <x-frontend.c-input 
-                :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
-                :label="'First Name'"
-                :labelClass="'!text-neutral-600 font-bold'"
-                :placeholder="'Enter first name'"
-                :isRequired="true"
-                type="text"
-                wire:model="form.firstname"
-                :error="$errors->first('form.firstname')"
+        <form wire:submit="saveName">
+            <x-frontend.c-header-md
+                :message="'Full Name'"
+                class="py-5"
             />
-            <x-frontend.c-input 
-                :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
-                :label="'Last Name'"
-                :labelClass="'!text-neutral-600 font-bold'"
-                :placeholder="'Enter last name'"
-                :id="'user-lastname'"
-                :isRequired="true"
-                type="text"
-                wire:model="form.lastname"
-                :error="$errors->first('form.lastname')"
+            <div class="flex items-center gap-5">
+                <x-frontend.c-input 
+                    :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
+                    :label="'First Name'"
+                    :labelClass="'!text-neutral-600 font-bold'"
+                    :placeholder="'Enter first name'"
+                    :isRequired="true"
+                    type="text"
+                    wire:model="form.firstname"
+                    :error="$errors->first('form.firstname')"
+                />
+                <x-frontend.c-input 
+                    :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
+                    :label="'Last Name'"
+                    :labelClass="'!text-neutral-600 font-bold'"
+                    :placeholder="'Enter last name'"
+                    :id="'user-lastname'"
+                    :isRequired="true"
+                    type="text"
+                    wire:model="form.lastname"
+                    :error="$errors->first('form.lastname')"
+                />
+            </div>
+            <x-frontend.c-header-md
+                :message="'Contact Email'"
+                class="mt-5"
             />
-        </div>
-        <div class="flex items-center">
-            <x-backend.c-button
-                :class="'bg-black mt-2 text-white ml-auto'"
-                :text="'Save'"
+            <x-backend.c-paragraph
+                :class="'max-w-3xl'"
+                :message="
+                    '
+                        Manage your accounts email address for the invoices
+                    '
+                "
+                class="mb-5"
             />
-        </div>
-        <hr class=" border-neutral-300 mt-5">
-        <x-frontend.c-header-md
-            :message="'Contact Email'"
-            class="mt-5" 
-        />
-        <x-backend.c-paragraph
-            :class="'max-w-3xl'"
-            :message="
-                '
-                    Manage your accounts email address for the invoices
-                '
-            "
-            class="mb-5"
-        />
-        <div class="flex items-center flex-col lg:flex-row justify-start lg:justify-between gap-5">
-            <x-frontend.c-input 
-                :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
-                :label="'Email'"
-                :labelClass="'!text-neutral-600 font-bold'"
-                :placeholder="'Enter email'"
-                :id="'user-email'"
-                :isRequired="true"
-                type="text"
-                wire:model="form.email"
-                :error="$errors->first('form.email')"
-            />
-        </div>
-        <div class="flex items-center">
-            <x-backend.c-button
-                :class="'bg-black mt-2 text-white ml-auto'"
-                :text="'Save'"
-            />
-        </div>
+            <div class="flex items-center flex-col lg:flex-row justify-start lg:justify-between gap-5">
+                <x-frontend.c-input 
+                    :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
+                    :label="'Email'"
+                    :labelClass="'!text-neutral-600 font-bold'"
+                    :placeholder="'Enter email'"
+                    :id="'user-email'"
+                    :isRequired="true"
+                    type="text"
+                    wire:model="form.email"
+                    :error="$errors->first('form.email')"
+                />
+                <x-frontend.c-input 
+                    :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
+                    :label="'role'"
+                    :labelClass="'!text-neutral-600 font-bold'"
+                    type="text"
+                    disabled
+                    wire:model="form.role"
+                    :error="$errors->first('form.role')"
+                />
+            </div>
+            <div class="flex items-center">
+                <x-backend.c-button
+                    type="submit"
+                    :class="'bg-black mt-2 text-white ml-auto'"
+                    :text="'Save'"
+                />
+            </div>
+            <x-frontend.c-success-message class="mt-2 text-right !text-green-600 font-semibold" />
+        </form>
         <hr class=" border-neutral-300 mt-5">
         <x-frontend.c-header-md
             :message="'Password'"
