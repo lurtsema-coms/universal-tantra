@@ -5,6 +5,9 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+
 
 new #[Layout('components.layouts.app-backend')]
 #[Title('Universal Tantra | Profile')] 
@@ -29,10 +32,9 @@ class extends Component {
         $this->form['lastname'] = $this->user->last_name;
         $this->form['email'] = $this->user->email;
         $this->form['role'] = $this->user->role;
-        // dd($this->form['email']);
     }
 
-    public function saveName()
+    public function saveInfo()
     {
         $this->validate([
             'form.firstname' => 'required|string|max:255',
@@ -47,7 +49,36 @@ class extends Component {
         ]);
 
         session()->flash('message', 'Account Name updated successfully!');
+    }
 
+    public function updatePassword()
+    {
+    $this->validate([
+        'form.currentpassword' => 'required|string',
+        'form.newpassword' => 'required|string|min:8', 
+        'form.confirmpassword' => 'required|string|same:form.newpassword',
+    ], [
+        'form.confirmpassword.same' => 'The new password confirmation does not match.',
+    ]);
+
+    if (!Hash::check($this->form['currentpassword'], $this->user->password)) {
+        throw ValidationException::withMessages([
+            'form.currentpassword' => 'Your current password is incorrect.',
+        ]);
+    }
+
+    // Update password
+    $this->user->update([
+        'password' => Hash::make($this->form['newpassword']),
+    ]);
+
+    // Reset password fields
+    $this->form['currentpassword'] = '';
+    $this->form['newpassword'] = '';
+    $this->form['confirmpassword'] = '';
+
+    session()->flash('message', 'Password updated successfully!');
+    
     }
 
 }; ?>
@@ -98,7 +129,7 @@ class extends Component {
             </div>
         </div>
         <hr class=" border-neutral-300">
-        <form wire:submit="saveName">
+        <form wire:submit="saveInfo">
             <x-frontend.c-header-md
                 :message="'Full Name'"
                 class="py-5"
@@ -153,7 +184,7 @@ class extends Component {
                 />
                 <x-frontend.c-input 
                     :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
-                    :label="'role'"
+                    :label="'Role'"
                     :labelClass="'!text-neutral-600 font-bold'"
                     type="text"
                     disabled
@@ -184,47 +215,47 @@ class extends Component {
             "
             class="mb-5"
         />
-        <div class="flex items-center gap-5">
-            <x-frontend.c-input 
-                :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
-                :label="'Current Password'"
-                :labelClass="'!text-neutral-600 font-bold'"
-                :placeholder="'Enter current password'"
-                :id="'user-currentpassword'"
-                :isRequired="true"
-                type="text"
-                wire:model="form.currentpassword"
-                :error="$errors->first('form.currentpassword')"
-            />
-            <x-frontend.c-input 
-                :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
-                :label="'New Password'"
-                :labelClass="'!text-neutral-600 font-bold'"
-                :placeholder="'Enter new password'"
-                :id="'user-newpassword'"
-                :isRequired="true"
-                type="text"
-                wire:model="form.newpassword"
-                :error="$errors->first('form.newpassword')"
-            />
-            <x-frontend.c-input 
-                :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
-                :label="'Confirm New Password'"
-                :labelClass="'!text-neutral-600 font-bold'"
-                :placeholder="'Re-type new password'"
-                :id="'user-confirmpassword'"
-                :isRequired="true"
-                type="text"
-                wire:model="form.confirmpassword"
-                :error="$errors->first('form.confirmpassword')"
-            />
-        </div>
-        <div class="flex items-center">
-            <x-backend.c-button
-                :class="'bg-black mt-2 text-white ml-auto'"
-                :text="'Save'"
-            />
-        </div>
+        <form wire:submit="updatePassword">
+            <div class="flex items-center gap-5">
+                <x-frontend.c-input 
+                    :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
+                    :label="'Current Password'"
+                    :labelClass="'!text-neutral-600 font-bold'"
+                    :placeholder="'Enter current password'"
+                    :isRequired="true"
+                    type="password"
+                    wire:model="form.currentpassword"
+                    :error="$errors->first('form.currentpassword')"
+                />
+                <x-frontend.c-input 
+                    :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
+                    :label="'New Password'"
+                    :labelClass="'!text-neutral-600 font-bold'"
+                    :placeholder="'Enter new password'"
+                    :isRequired="true"
+                    type="password"
+                    wire:model="form.newpassword"
+                    :error="$errors->first('form.newpassword')"
+                />
+                <x-frontend.c-input 
+                    :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
+                    :label="'Confirm New Password'"
+                    :labelClass="'!text-neutral-600 font-bold'"
+                    :placeholder="'Re-type new password'"
+                    :isRequired="true"
+                    type="password"
+                    wire:model="form.confirmpassword"
+                    :error="$errors->first('form.confirmpassword')"
+                />
+            </div>
+            <div class="flex items-center">
+                <x-backend.c-button
+                    :class="'bg-black mt-2 text-white ml-auto'"
+                    :text="'Save'"
+                    type="submit"
+                />
+            </div>
+        </form>
     </div>
 </div>
 
