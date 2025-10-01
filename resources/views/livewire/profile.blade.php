@@ -128,13 +128,21 @@ class extends Component {
                 />
             </div>
         </div>
-        <hr class=" border-neutral-300">
+        <hr class=" border-neutral-300 mb-5">
         <form wire:submit="saveInfo">
             <x-frontend.c-header-md
                 :message="'Full Name'"
-                class="py-5"
             />
-            <div class="flex items-center gap-5">
+            <x-backend.c-paragraph
+                :class="'max-w-3xl'"
+                :message="
+                    '
+                        Manage your accounts email address for the invoices
+                    '
+                "
+                class="mb-5"
+            />
+            <div class="flex items-center flex-col lg:flex-row gap-5">
                 <x-frontend.c-input 
                     :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
                     :label="'First Name'"
@@ -216,7 +224,7 @@ class extends Component {
             class="mb-5"
         />
         <form wire:submit="updatePassword">
-            <div class="flex items-center gap-5">
+            <div class="flex items-center flex-col lg:flex-row  gap-5">
                 <x-frontend.c-input 
                     :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
                     :label="'Current Password'"
@@ -255,6 +263,7 @@ class extends Component {
                     type="submit"
                 />
             </div>
+            <x-frontend.c-success-message class="mt-2 text-right !text-green-600 font-semibold" />
         </form>
     </div>
 </div>
