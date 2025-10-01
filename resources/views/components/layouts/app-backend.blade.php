@@ -6,13 +6,13 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <title>{{ $title ?? 'Page Title' }}</title>
     </head>
-    <body>
+    <body class="bg-[#F5F5F9]">
         <livewire:components.sidebar-backend />
 
-        <div class="lg:pl-72">
+        <div class="lg:pl-72 ">
             <livewire:components.nav-backend />
             
-            <main class=" pt-4 pb-10">
+            <main class=" pt-4 pb-10 ">
                 <div class="px-4 sm:px-6 lg:px-8">
                     {{ $slot }}
                 </div>

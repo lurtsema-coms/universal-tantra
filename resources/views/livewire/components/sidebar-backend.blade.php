@@ -23,7 +23,7 @@ new class extends Component {
                 </div>
         
                 <!-- Sidebar component, swap this element with another sidebar if you like -->
-                <div class="relative flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
+                <div class="relative flex grow flex-col gap-y-5 overflow-y-auto bg-black px-6 py-4 ring-1 ring-white/10">
                 <div class="relative flex h-16 shrink-0 items-center">
                     <a wire:navigate href="/">
                         <img src="{{ asset('img/UT-Logo.png') }}" alt="Universal Tantra Logo" class="max-w-24 relative top-2 -left-5" />
@@ -48,32 +48,32 @@ new class extends Component {
                             @if((auth()->check()) && (auth()->user()->role === 'Admin'))
                                 <li>
                                     <a wire:navigate href="/admin-events" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:text-white hover:bg-white/5" wire:current="bg-white/5 text-white">
-                                        <svg viewBox="0 0 24 24" ... class="size-6 shrink-0">
-                                            <!-- Events icon -->
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 shrink-0">
+                                        <path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                         Events
                                     </a>
                                 </li>
                                 <li>
                                     <a wire:navigate href="/admin-library" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:text-white hover:bg-white/5" wire:current="bg-white/5 text-white">
-                                        <svg viewBox="0 0 24 24" ... class="size-6 shrink-0">
-                                            <!-- Library icon -->
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 shrink-0">
+                                        <path d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                         Library
                                     </a>
                                 </li>
                                 <li>
                                     <a wire:navigate href="/admin-shop" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:text-white hover:bg-white/5" wire:current="bg-white/5 text-white">
-                                        <svg viewBox="0 0 24 24" ... class="size-6 shrink-0">
-                                            <!-- Shop icon -->
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 shrink-0">
+                                        <path d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                         Shop
                                     </a>
                                 </li>
                                 <li>
                                     <a wire:navigate href="/admin-users" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:text-white hover:bg-white/5" wire:current="bg-white/5 text-white">
-                                        <svg viewBox="0 0 24 24" ... class="size-6 shrink-0">
-                                            <!-- Users icon -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
                                         </svg>
                                         Users
                                     </a>
@@ -99,9 +99,9 @@ new class extends Component {
     </el-dialog>
 
     <!-- Static sidebar for desktop -->
-    <div class="hidden bg-gray-900 ring-1 ring-white/10 lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+    <div class="hidden bg-gradient-to-b from-black to-gray-800 ring-1 ring-white/10 lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
-        <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-black/10 px-6 pb-4">
+        <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-black/10 px-6 py-4">
             <div class="flex h-16 shrink-0 items-center">
                 <a wire:navigate href="/">
                     <img src="{{ asset('img/UT-Logo.png') }}" alt="Universal Tantra Logo" class="max-w-24 relative top-2 -left-5" />
