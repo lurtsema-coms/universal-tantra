@@ -99,7 +99,7 @@ new class extends Component {
     </el-dialog>
 
     <!-- Static sidebar for desktop -->
-    <div class="hidden bg-gradient-to-b from-black to-gray-800 ring-1 ring-white/10 lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+    <div class="hidden bg-gradient-to-b from-black to-gray-800 ring-1 ring-white/10 lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-[17rem] lg:flex-col">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-black/10 px-6 py-4">
             <div class="flex h-16 shrink-0 items-center">
@@ -109,9 +109,9 @@ new class extends Component {
                 <span class="text-white font-bold relative top-2 -left-4">Universal Tantra</span>
             </div>
             <nav class="flex flex-1 flex-col">
-                <ul role="list" class="flex flex-1 flex-col gap-y-7">
+                <ul role="list" class="flex flex-1 flex-col gap-y-7 ">
                     <li>
-                        <ul role="list" class="-mx-2 space-y-1">
+                        <ul role="list" class="-mx-2 space-y-1 ">
                             <li>
                             <a wire:navigate href="/dashboard" class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-400 hover:text-white hover:bg-white/5" wire:current="bg-white/5 text-white">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 shrink-0">

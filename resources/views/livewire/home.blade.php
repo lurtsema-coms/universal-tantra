@@ -42,9 +42,9 @@ class extends Component {
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div class="flex gap-8 mt-12 justify-center">
-                <x-frontend.c-button class="bg-gradient-to-b from-red-700 to-red-900 w-89" text="LOGIN ACCOUNT" :link="'/login'"  />
-                <x-frontend.c-button class="bg-gradient-to-b from-yellow-500 to-yellow-900 w-89" text="ENTER THE TEMPLE"/>
+            <div class="flex flex-col gap-3 lg:gap-8 mt-12 justify-center items-center lg:flex-row">
+                <x-frontend.c-button class="bg-gradient-to-b from-red-700 to-red-900 w-72 lg:w-89 " text="LOGIN ACCOUNT" :link="'/login'"  />
+                <x-frontend.c-button class="bg-gradient-to-b from-yellow-500 to-yellow-900 w-72 lg:w-89" text="ENTER THE TEMPLE"/>
             </div>
         </div>
         <div class="absolute left-0 top-0 md:-top-30 w-full overflow-hidden">

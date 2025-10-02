@@ -9,7 +9,7 @@
     <body class="bg-[#F5F5F9]">
         <livewire:components.sidebar-backend />
 
-        <div class="lg:pl-72 ">
+        <div class="lg:pl-[17rem] ">
             <livewire:components.nav-backend />
             
             <main class=" pt-4 pb-10 ">
