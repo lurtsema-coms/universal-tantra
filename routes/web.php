@@ -31,7 +31,16 @@ Route::middleware(['auth', 'verified', 'role:Admin'])->group(function () {
     Volt::route('/admin-events', 'admin/events');
     Volt::route('/admin-events/add', 'admin/events-add');
     Volt::route('/admin-events/edit/{id}', 'admin/events-edit');
-    Volt::route('/admin-library', 'admin/library');
+    Volt::route('/admin-library-videos', 'admin/library-videos');
+    Volt::route('/admin-library-videos/add', 'admin/library-videos-add');
+    Volt::route('/admin-library-videos/edit/{id}', 'admin/library-videos-edit');
+    Volt::route('/admin-library-audios', 'admin/library-audios');
+    Volt::route('/admin-library-audios/add', 'admin/library-audios-add');
+    Volt::route('/admin-library-audios/edit/{id}', 'admin/library-audios-edit');
+    Volt::route('/admin-library-read', 'admin/library-read');
+    Volt::route('/admin-library-read/add', 'admin/library-read-add');
+    Volt::route('/admin-library-read/edit/{id}', 'admin/library-read-edit');
+    // Volt::route('/admin-library', 'admin/library');
     Volt::route('/admin-shop', 'admin/shop');
     Volt::route('/admin-users', 'admin/users');
     Volt::route('/admin-users/add', 'admin/users-add');
