@@ -5,6 +5,7 @@ use Livewire\Volt\Volt;
 
 // Public pages
 Volt::route('/', 'home');
+Volt::route('/vision', 'vision');
 Volt::route('/about', 'about');
 Volt::route('/library', 'library');
 Volt::route('/initiations', 'initiations');

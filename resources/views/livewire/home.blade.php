@@ -29,7 +29,7 @@ class extends Component {
             />
             {{-- <div class="h-80 rounded-3xl w-full border-2 border-gray-200 max-w-2xl m-auto mt-16 bg-white/30">
             </div> --}}
-            <div class="rounded-3xl w-full border-2 border-gray-200 max-w-2xl m-auto mt-16 bg-white/30 overflow-hidden">
+            {{-- <div class="rounded-3xl w-full border-2 border-gray-200 max-w-2xl m-auto mt-16 bg-white/30 overflow-hidden">
                 <video 
                     class="w-full h-85 object-cover object-[center_52%] rounded-3xl"
                     autoplay 
@@ -41,7 +41,7 @@ class extends Component {
                     <source src="{{ asset('video/vajra_bell.mp4') }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-            </div>
+            </div> --}}
             <div class="flex flex-col gap-3 lg:gap-8 mt-12 justify-center items-center lg:flex-row">
                 <x-frontend.c-button class="bg-gradient-to-b from-red-700 to-red-900 w-72 lg:w-89 " text="LOGIN ACCOUNT" :link="'/login'"  />
                 <x-frontend.c-button class="bg-gradient-to-b from-yellow-500 to-yellow-900 w-72 lg:w-89" text="ENTER THE TEMPLE"/>
@@ -75,7 +75,7 @@ class extends Component {
                 alt="fire-overlay"
             >
         </div>
-        <x-frontend.c-section cardClass="relative w-full z-10" :gridColumn="2">
+        <x-frontend.c-section cardClass="relative w-full z-10 mt-0 lg:mt-60" :gridColumn="2">
             <div class="absolute inset-0 h-[43rem]">
                 <div class="absolute inset-0 bg-gradient-to-b from-black-100 via-red-600/70 to-black-100 opacity-80 mix-blend-screen select-none">
                 </div>

@@ -40,15 +40,16 @@ new class extends Component {
 
         <!-- Desktop nav: hidden on mobile -->
         <nav class="cvs-nav-desktop hidden lg:flex space-x-6 items-center font-semibold">
+            <a wire:navigate href="/vision" class="text-neutral-200 hover:text-white transition-colors" wire:current="!text-white">Vision</a>
             <a wire:navigate href="/about" class="text-neutral-200 hover:text-white transition-colors" wire:current="!text-white">About</a>
             <a wire:navigate href="/library" class="text-neutral-200 hover:text-white transition-colors" wire:current="!text-white">Library</a>
             <a wire:navigate href="/initiations" class="text-neutral-200 hover:text-white transition-colors" wire:current="!text-white">Initiations</a>
             <a wire:navigate href="/events" class="text-neutral-200 hover:text-white transition-colors" wire:current="!text-white">Events</a>
             <a wire:navigate href="/donate" class="text-neutral-200 hover:text-white transition-colors" wire:current="!text-white">Donate</a>
             <a wire:navigate href="/shop" class="text-neutral-200 hover:text-white transition-colors">Shop</a>
-            <a wire:navigate href="/booking" class="text-black bg-white px-8 rounded-full py-1 transition-opacity hover:opacity-70">Book a Session</a>
+            <a wire:navigate href="/booking" class="text-black bg-white px-8 rounded-full py-1 ml-20 transition-opacity hover:opacity-70">Book a Session</a>
             @auth
-                <a wire:navigate href="/login" class="text-black bg-white px-8 rounded-full py-1 transition-opacity hover:opacity-70">Dashboard</a>
+                <a wire:navigate href="/login" class="text-black bg-white px-8 rounded-full py-1 ml-20 transition-opacity hover:opacity-70">Dashboard</a>
             @else
                 <a wire:navigate href="/login" class="text-black bg-white px-8 rounded-full py-1 transition-opacity hover:opacity-70">Login</a>
             @endauth
@@ -69,6 +70,7 @@ new class extends Component {
                     <path d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
+            <a wire:navigate href="/vision" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Vision</a>
             <a wire:navigate href="/about" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">About</a>
             <a wire:navigate href="/library" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Library</a>
             <a wire:navigate href="/initiations" class="hover:text-yellow-400 transition-colors" onclick="toggleMenu()">Initiations</a>
