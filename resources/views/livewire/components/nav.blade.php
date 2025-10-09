@@ -49,7 +49,7 @@ new class extends Component {
             <a wire:navigate href="/shop" class="text-neutral-200 hover:text-white transition-colors">Shop</a>
             <a wire:navigate href="/booking" class="text-black bg-white px-8 rounded-full py-1 ml-20 transition-opacity hover:opacity-70">Book a Session</a>
             @auth
-                <a wire:navigate href="/login" class="text-black bg-white px-8 rounded-full py-1 ml-20 transition-opacity hover:opacity-70">Dashboard</a>
+                <a wire:navigate href="/login" class="text-black bg-white px-8 rounded-full py-1 transition-opacity hover:opacity-70">Dashboard</a>
             @else
                 <a wire:navigate href="/login" class="text-black bg-white px-8 rounded-full py-1 transition-opacity hover:opacity-70">Login</a>
             @endauth
