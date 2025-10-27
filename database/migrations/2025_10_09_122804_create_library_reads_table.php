@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('library_reads', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->text('img_path')->nullable();
+            $table->foreignId('created_by')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
+
+            $table->foreignId('updated_by')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->date('date');
             $table->text('description');
-            $table->text('img_path')->nullable();
+            $table->text('video_path')->nullable();
             $table->foreignId('created_by')
                 ->nullable()
                 ->constrained('users')

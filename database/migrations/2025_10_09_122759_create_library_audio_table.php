@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('library_audio', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->text('img_path')->nullable();
+            $table->text('audio_path')->nullable();
+            $table->foreignId('created_by')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
+
+            $table->foreignId('updated_by')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
             $table->timestamps();
         });
     }
