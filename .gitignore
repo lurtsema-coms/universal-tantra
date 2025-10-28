@@ -17,6 +17,8 @@
 /public/storage
 /public/video
 /public/img-events
+/public/lib-audio
+/public/lib-img-audio
 /storage/*.key
 /storage/pail
 /vendor

@@ -37,7 +37,14 @@ class extends Component
             $this->form->img_path = url('img-events/' . $file_name);
         }
 
-        Event::create($this->form->all());
+        Event::create([
+            'title' => $this->form->title,
+            'date' => $this->form->date,
+            'description' => $this->form->description,
+            'img_path' => $this->form->img_path,
+            'created_by' => auth()->user()->id,
+
+        ]);
 
         $this->form->reset();
         session()->flash('message', 'Event created successfully!');
