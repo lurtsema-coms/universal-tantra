@@ -92,15 +92,15 @@ new class extends Component {
                                         x-transition:leave-start="opacity-100 max-h-screen"
                                         x-transition:leave-end="opacity-0 max-h-0"
                                         class="ml-8 mt-2 space-y-1 !text-white overflow-hidden"
-                                    >
-                                        <li>
-                                            <a wire:navigate href="/admin-library-videos" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Videos</a>
-                                        </li>
+                                        >
                                         <li>
                                             <a wire:navigate href="/admin-library-audios" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Audios</a>
                                         </li>
                                         <li>
                                             <a wire:navigate href="/admin-library-read" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Read</a>
+                                        </li>
+                                        <li>
+                                            <a wire:navigate href="/admin-library-videos" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Videos</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -205,13 +205,13 @@ new class extends Component {
                                         class="ml-8 mt-2 space-y-1 !text-white overflow-hidden"
                                     >
                                         <li>
-                                            <a wire:navigate href="/admin-library-videos" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Videos</a>
-                                        </li>
-                                        <li>
                                             <a wire:navigate href="/admin-library-audios" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Audios</a>
                                         </li>
                                         <li>
                                             <a wire:navigate href="/admin-library-read" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Read</a>
+                                        </li>
+                                        <li>
+                                            <a wire:navigate href="/admin-library-videos" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Videos</a>
                                         </li>
                                     </ul>
                                 </li>

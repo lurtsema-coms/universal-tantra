@@ -36,34 +36,34 @@ class extends Component
             <div class="grid md:grid-cols-2 gap-4">
                 <x-frontend.c-input 
                     :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
-                    :label="'Event Title'"
+                    :label="'Video Title'"
                     :labelClass="'!text-neutral-600 font-bold'"
-                    :placeholder="'Enter event title'"
-                    :id="'event-title'"
+                    :placeholder="'Enter video title'"
+                    :id="'video-title'"
                     :isRequired="true"
                     type="text"
                     wire:model="form.title"
                     :error="$errors->first('form.title')"
                 />
                 <x-frontend.c-input 
-                    :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
-                    :label="'Event Date'"
+                    :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40 pt-2"
+                    :label="'Upload Video'"
                     :labelClass="'!text-neutral-600 font-bold'"
-                    :placeholder="'Enter event date'"
-                    :id="'event-title'"
+                    :id="'video-file'"
                     :isRequired="true"
-                    type="date"
-                    wire:model="form.date"
-                    :error="$errors->first('form.date')"
+                    type="file"
+                    accept="video/*"
+                    wire:model="form.video"
+                    :error="$errors->first('form.video')"
                 />
             </div>
             <x-frontend.c-textarea 
                 :class="'w-full shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40 h-32'"
-                :label="'Event Description'"
+                :label="'Video Description'"
                 :labelClass="'!text-neutral-600 font-bold'"
-                :placeholder="'Enter event description'"
+                :placeholder="'Enter video description'"
                 :isRequired="true"
-                :id="'event-description'"
+                :id="'video-description'"
                 wire:model="form.description"
                 :error="$errors->first('form.description')"
             >
