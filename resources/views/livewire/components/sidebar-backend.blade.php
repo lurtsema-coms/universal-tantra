@@ -97,7 +97,7 @@ new class extends Component {
                                             <a wire:navigate href="/admin-library-audios" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Audios</a>
                                         </li>
                                         <li>
-                                            <a wire:navigate href="/admin-library-read" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Read</a>
+                                            <a wire:navigate href="/admin-library-read" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Texts</a>
                                         </li>
                                         <li>
                                             <a wire:navigate href="/admin-library-videos" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Videos</a>
@@ -208,7 +208,7 @@ new class extends Component {
                                             <a wire:navigate href="/admin-library-audios" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Audios</a>
                                         </li>
                                         <li>
-                                            <a wire:navigate href="/admin-library-read" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Read</a>
+                                            <a wire:navigate href="/admin-library-read" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Texts</a>
                                         </li>
                                         <li>
                                             <a wire:navigate href="/admin-library-videos" class="block rounded-md p-2 hover:text-white hover:bg-[#F0B133]" wire:current="bg-[#F0B133] text-white">Videos</a>
