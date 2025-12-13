@@ -34,7 +34,7 @@ class extends Component
 
         LibraryRead:: create([
             'title' => $this->form->title,
-            'description' => $this->form->title,
+            'description' => $this->form->description,
             'img_path' => $this->form->img_path,
             'created_by' => auth()->user()->id,
         ]);
