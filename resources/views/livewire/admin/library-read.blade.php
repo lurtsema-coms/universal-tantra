@@ -32,13 +32,13 @@ class extends Component
     <div class="mt-4 flex items-center gap-4">
         <x-frontend.c-input 
             :class="'w-full max-w-sm shadow-sm outline-1 outline-black/5 focus:outline-slate-800/40'"
-            :placeholder="'Search read...'"
+            :placeholder="'Search text...'"
             type="search"
             {{-- wire:model.live.debounce.250ms="search" --}}
         />
         <x-backend.c-button
             :class="'bg-black text-white shrink-0'"
-            :text="'Add Read'"
+            :text="'Add Text'"
             :link="'/admin-library-read/add'"
         />
     </div>

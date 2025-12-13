@@ -19,6 +19,7 @@
 /public/img-events
 /public/lib-audio
 /public/lib-img-audio
+/public/lib-img-read
 /storage/*.key
 /storage/pail
 /vendor
