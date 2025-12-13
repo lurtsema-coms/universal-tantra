@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('library_videos', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
             $table->text('video_path')->nullable();
             $table->foreignId('created_by')
                 ->nullable()

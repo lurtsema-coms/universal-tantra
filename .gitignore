@@ -18,6 +18,7 @@
 /public/video
 /public/img-events
 /public/lib-audio
+/public/lib-video
 /public/lib-img-audio
 /public/lib-img-read
 /storage/*.key
