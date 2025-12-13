@@ -42,13 +42,25 @@ class extends Component
     public function delete($id)
     {
         $event = Event::find($id);
-        Storage::disk('public')->delete('img-events/' . basename($event->img_path));
+    
+        if (! $event) return;
+    
+        if ($event->img_path) {
+            Storage::disk('public')->delete('img-events/' . basename($event->img_path));
+        }
+    
         $event->delete();
+    }
+
+    public function updatedSearch()
+    {
+        $this->resetPage();
     }
 }; ?>
 
 
-<div x-data="{ modal: false, deletedId: null }">
+<div x-data="{ modal: false, deleteId: null }">
+
     <x-frontend.c-header-md
         :message="'Events'" 
     />
@@ -112,8 +124,8 @@ class extends Component
                                     <x-table.td>
                                         <a wire:navigate href="/admin-events/edit/{{ $event->id }}" class="text-slate-600 hover:text-slate-900">Edit</a>
                                         <button
-                                            x-on:click="modal=true; deleteId = $event.target.getAttribute('delete-id')"
-                                            :delete-id="{{ $event->id }}"
+                                            type="button"
+                                            x-on:click="modal = true; deleteId = {{ $event->id }}"
                                             class="ml-4 text-red-600 hover:text-red-900 cursor-pointer"
                                         >
                                             Delete
@@ -132,17 +144,15 @@ class extends Component
         </div>
     </div>
         <x-frontend.c-modal
-        x-show="modal"
-        :maxWidth="'xl'"
-        :title="'Delete Event'" 
-        :descriptions="[
-            'Are you sure you want to delete this event? This action cannot be undone',
-        ]"
-        :confirmed="'
-            $wire.delete(deleteId);
-        '"
-        :src="asset('img-icon/bin.png')"
-        :alt="'Delete Icon'"
-        :textConfirm="'Confirm'"
-    />
+            x-show="modal"
+            :maxWidth="'xl'"
+            :title="'Delete Event'"
+            :descriptions="[
+                'Are you sure you want to delete this event? This action cannot be undone',
+            ]"
+            :confirmed="'$wire.delete(deleteId);'"
+            :src="asset('img-icon/bin.png')"
+            :alt="'Delete Icon'"
+            :textConfirm="'Confirm'"
+        />
 </div>
