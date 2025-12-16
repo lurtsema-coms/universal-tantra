@@ -27,7 +27,7 @@ class extends Component
             $uuid = substr(Str::uuid()->toString(), 0, 8);
             $file_name = $uuid . '.' . $this->form->img_path->getClientOriginalExtension();
 
-            $this->form->img_path->storePubliclyAs('lib-img-read', $file_name, 'public');
+            // $this->form->img_path->storePubliclyAs('lib-img-read', $file_name, 'public');
 
             $this->form->img_path = url('storage/lib-img-read/' . $file_name);
         }
